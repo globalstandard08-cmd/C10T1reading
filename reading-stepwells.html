@@ -7,6 +7,21 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: Arial, sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        
+        /* Logo area */
+        .logo-container {
+            text-align: center;
+            padding: 8px 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            letter-spacing: 1px;
+        }
+
         h1 { text-align: center; padding: 10px; font-size: 20px; color: #2c3e50; }
         .subhead { text-align: center; font-style: italic; color: #555; margin-bottom: 15px; }
 
@@ -17,7 +32,7 @@
             gap: 20px;
             padding: 0 20px;
             flex: 1;
-            height: calc(100vh - 120px);
+            height: calc(100vh - 220px); /* Fixed height so buttons show fully */
         }
 
         .box {
@@ -47,7 +62,7 @@
             cursor: pointer;
         }
 
-        /* Floating highlight icon */
+        /* Floating tools */
         .highlight-tool {
             position: absolute;
             background: #fff;
@@ -66,7 +81,6 @@
             border-color: #ffc107;
         }
 
-        /* Remove highlight option */
         .remove-highlight {
             position: absolute;
             background: #fff;
@@ -95,12 +109,38 @@
             resize: vertical;
         }
 
-        /* Navigation buttons */
-        .nav { 
-            padding: 15px 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            border-top: 1px solid #eee; 
+        /* Answer styling */
+        .correct-answer {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 4px;
+            display: none;
+        }
+
+        /* Bottom controls & navigation */
+        .bottom-controls {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+        .check-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: none;
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .check-btn:hover {
+            background: #218838;
+        }
+        .nav {
+            display: flex;
+            gap: 10px;
         }
         .nav a, .nav span { 
             padding: 8px 16px; 
@@ -108,12 +148,18 @@
             border-radius: 4px; 
             text-decoration: none; 
             cursor: pointer; 
+            border: none;
         }
         .prev { background: #6c757d; color: white; opacity: 0.6; }
         .next { background: #007bff; color: white; font-weight: bold; }
     </style>
 </head>
 <body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <div class="logo">IELTS READING PRACTICE</div>
+    </div>
+
     <h1>Reading Passage 1</h1>
     <p class="subhead">You should spend about 20 minutes on Questions 1–13</p>
 
@@ -164,19 +210,24 @@
                 <strong>NOT GIVEN</strong> if there is no information on this</p>
 
                 <label><strong>1.</strong> Examples of ancient stepwells can be found all over the world.</label>
-                <textarea class="ans"></textarea>
+                <textarea class="ans" data-answer="FALSE"></textarea>
+                <div class="correct-answer">Correct answer: FALSE</div>
 
                 <label><strong>2.</strong> Stepwells had a range of functions, in addition to those related to water collection.</label>
-                <textarea class="ans"></textarea>
+                <textarea class="ans" data-answer="TRUE"></textarea>
+                <div class="correct-answer">Correct answer: TRUE</div>
 
                 <label><strong>3.</strong> The few existing stepwells in Delhi are more attractive than those found elsewhere.</label>
-                <textarea class="ans"></textarea>
+                <textarea class="ans" data-answer="NOT GIVEN"></textarea>
+                <div class="correct-answer">Correct answer: NOT GIVEN</div>
 
                 <label><strong>4.</strong> It took workers many years to build the stone steps characteristic of stepwells.</label>
-                <textarea class="ans"></textarea>
+                <textarea class="ans" data-answer="NOT GIVEN"></textarea>
+                <div class="correct-answer">Correct answer: NOT GIVEN</div>
 
                 <label><strong>5.</strong> The number of steps above the water level in a stepwell altered during the course of a year.</label>
-                <textarea class="ans"></textarea>
+                <textarea class="ans" data-answer="TRUE"></textarea>
+                <div class="correct-answer">Correct answer: TRUE</div>
             </div>
 
             <div class="question">
@@ -184,13 +235,16 @@
                 <p><em>Answer the questions below. Choose ONE WORD ONLY from the passage for each answer.</em></p>
 
                 <label><strong>6.</strong> Which part of some stepwells provided shade for people?</label>
-                <textarea class="ans"></textarea>
+                <textarea class="ans" data-answer="pavilions"></textarea>
+                <div class="correct-answer">Correct answer: pavilions</div>
 
                 <label><strong>7.</strong> What type of serious climatic event, which took place in southern Rajasthan, is mentioned in the article?</label>
-                <textarea class="ans"></textarea>
+                <textarea class="ans" data-answer="drought"></textarea>
+                <div class="correct-answer">Correct answer: drought</div>
 
                 <label><strong>8.</strong> Who are frequent visitors to stepwells nowadays?</label>
-                <textarea class="ans"></textarea>
+                <textarea class="ans" data-answer="Tourists"></textarea>
+                <div class="correct-answer">Correct answer: Tourists</div>
             </div>
 
             <div class="question">
@@ -207,13 +261,14 @@
                         <td style="border:1px solid #ccc; padding:8px;">Rani Ki Vav</td>
                         <td style="border:1px solid #ccc; padding:8px;">Late 11th century</td>
                         <td style="border:1px solid #ccc; padding:8px;">As many as 500 sculptures decorate the monument</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Restored in the 1960s<br>Excellent condition, despite the <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> of 2001</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Restored in the 1960s<br>Excellent condition, despite the <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="earthquake"></textarea> of 2001
+                        <div class="correct-answer" style="display:block; margin-left:85px;">Correct: earthquake</div></td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Surya Kund</td>
                         <td style="border:1px solid #ccc; padding:8px;">1026</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Steps on the <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> produce a geometrical pattern<br>Carved shrines</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Looks more like a <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> than a well</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Steps on the <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="four sides"></textarea> produce a geometrical pattern<br>Carved shrines</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Looks more like a <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="tank"></textarea> than a well</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Raniji Ki Baori</td>
@@ -225,12 +280,12 @@
                         <td style="border:1px solid #ccc; padding:8px;">Chand Baori</td>
                         <td style="border:1px solid #ccc; padding:8px;">850 AD</td>
                         <td style="border:1px solid #ccc; padding:8px;">Steps take you down 11 storeys to the bottom</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Old, deep and very dramatic<br>Has <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> which give a view over the steps</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Old, deep and very dramatic<br>Has <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="verandas"></textarea> which give a view over the steps</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Neemrana Ki Baori</td>
                         <td style="border:1px solid #ccc; padding:8px;">c. 1700</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Has two <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> levels</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Has two <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="underwater"></textarea> levels</td>
                         <td style="border:1px solid #ccc; padding:8px;">Still used today</td>
                     </tr>
                 </table>
@@ -238,10 +293,13 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav">
-        <span class="prev">← Previous Passage</span>
-        <a href="reading-passage2.html" class="next">Next Passage →</a>
+    <!-- Bottom controls & navigation -->
+    <div class="bottom-controls">
+        <button class="check-btn" onclick="toggleAnswers()">Show / Hide Answers</button>
+        <div class="nav">
+            <span class="prev">← Previous Passage</span>
+            <a href="reading-passage2.html" class="next">Next Passage →</a>
+        </div>
     </div>
 
     <script>
@@ -272,7 +330,6 @@
             const rect = currentRange.getBoundingClientRect();
             const boxRect = passageBox.getBoundingClientRect();
 
-            // Position icon near selection
             highlightTool.style.left = (rect.left - boxRect.left + rect.width / 2 - 15) + 'px';
             highlightTool.style.top = (rect.top - boxRect.top - 35) + 'px';
             highlightTool.style.display = 'block';
@@ -309,24 +366,35 @@
             }
         });
 
-        // --- Remove highlight ---
+        // --- Fixed Remove highlight function ---
         removeTool.addEventListener('click', function() {
             const span = this.dataset.target;
-            if (!span) return;
+            if (!span || !span.parentNode) return;
 
             const parent = span.parentNode;
-            parent.replaceChild(document.createTextNode(span.textContent), span);
+            const textNode = document.createTextNode(span.textContent);
+            parent.replaceChild(textNode, span);
             parent.normalize();
 
             this.style.display = 'none';
+            delete this.dataset.target;
         });
 
         // Hide tools when clicking outside
         document.addEventListener('click', function(e) {
-            if (!highlightTool.contains(e.target) && !passageBox.contains(e.target)) {
+            if (!highlightTool.contains(e.target) && !passageBox.contains(e.target) && !removeTool.contains(e.target)) {
                 highlightTool.style.display = 'none';
+                removeTool.style.display = 'none';
             }
         });
+
+        // --- Toggle show/hide answers ---
+        function toggleAnswers() {
+            const answers = document.querySelectorAll('.correct-answer');
+            answers.forEach(ans => {
+                ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+            });
+        }
     </script>
 </body>
 </html>
