@@ -6,29 +6,29 @@
   <title>Reading Lesson: Stepwells</title>
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
+
     body {
       font-family: Arial, sans-serif;
-      max-width: 1250px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      line-height: 1.7;
+      background-color: #ffffff;
       color: #222;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
+    /* Logo */
     .logo {
       display: block;
       width: 300px;
       height: auto;
-      margin: 0 auto 1rem;
+      margin: 1rem auto;
     }
 
+    /* Header */
     .page-header {
       text-align: center;
       margin-bottom: 1rem;
@@ -53,15 +53,17 @@
       color: #000;
     }
 
+    /* Main content - full height panels */
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
-      flex-grow: 1;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
+      padding: 0 1.5rem;
+      flex: 1;
+      min-height: calc(100vh - 180px);
     }
 
+    /* Reading panel */
     .reading-passage {
       background: #ffffff;
       padding: 1.5rem;
@@ -77,9 +79,11 @@
     }
     .reading-passage p {
       margin-bottom: 1.2rem;
+      line-height: 1.7;
       text-align: justify;
     }
 
+    /* Questions panel */
     .questions-section {
       background: #fefefe;
       padding: 1.5rem;
@@ -108,12 +112,12 @@
     }
     .answer-input {
       width: 100%;
-      padding: 0.75rem;
+      padding: 0.7rem;
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 1rem;
+      min-height: 48px;
       resize: vertical;
-      min-height: 50px;
     }
     .table-container {
       overflow-x: auto;
@@ -134,40 +138,43 @@
       background-color: #f2f2f2;
     }
 
-    /* Fixed bottom button area */
+    /* Bottom navigation only */
     .bottom-nav {
-      padding: 1rem 0;
+      padding: 1.2rem 1.5rem;
       border-top: 1px solid #eee;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 1rem;
+      flex-shrink: 0;
     }
     .save-status {
-      font-size: 0.95rem;
       color: #28a745;
       font-weight: 500;
+      font-size: 0.95rem;
     }
     .next-btn {
-      padding: 1rem 2.5rem;
-      font-size: 1.15rem;
-      background: #007bff;
+      padding: 0.8rem 2rem;
+      background-color: #007bff;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 4px;
       text-decoration: none;
-      display: inline-block;
-      cursor: pointer;
+      font-size: 1rem;
       font-weight: 500;
+      cursor: pointer;
     }
     .next-btn:hover {
-      background: #0056b3;
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
+  <!-- Logo -->
   <img src="ielts-logo.png" alt="IELTS Logo" class="logo">
+
   <div class="page-header">
-    <h1>Reading Lesson: Stepwells</h1>
+    <h1>Reading Passage 1</h1>
     <p>You should spend about 20 minutes on Questions 1–13</p>
   </div>
 
@@ -272,13 +279,13 @@
               <td>Chand Baori</td>
               <td>850 AD</td>
               <td>Steps take you down 11 storeys to the bottom</td>
-              <td>Old, deep and very dramatic<br>Has <textarea class="answer-input" id="ans12" placeholder="Answer 12"></textarea> which provide a view of the steps</td>
+              <td>Old, deep and very dramatic<br>Has <textarea class="answer-input" id="ans12" placeholder="Answer 12"></textarea> which give a view over the steps</td>
             </tr>
             <tr>
               <td>Neemrana Ki Baori</td>
-              <td>1700</td>
+              <td>c. 1700</td>
               <td>Has two <textarea class="answer-input" id="ans13" placeholder="Answer 13"></textarea> levels</td>
-              <td>Used by public today</td>
+              <td>Still used today</td>
             </tr>
           </table>
         </div>
@@ -286,10 +293,10 @@
     </div>
   </div>
 
-  <!-- Bottom navigation - very bottom of page -->
+  <!-- Bottom navigation -->
   <div class="bottom-nav">
     <span class="save-status">✓ Answers saved automatically</span>
-    <a href="reading-transport.html" class="next-btn">Next Passage →</a>
+    <a href="reading-passage2.html" class="next-btn">Next Passage →</a>
   </div>
 
   <script>
