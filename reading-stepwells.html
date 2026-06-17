@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reading Passage 2: European Transport Systems</title>
+  <title>Reading Lesson: Stepwells</title>
   <style>
     * {
       box-sizing: border-box;
@@ -24,7 +24,7 @@
 
     .logo {
       display: block;
-      width: 150px;
+      width: 300px;
       height: auto;
       margin: 0 auto 1rem;
     }
@@ -59,6 +59,7 @@
       gap: 1.5rem;
       flex-grow: 1;
       overflow: hidden;
+      margin-bottom: 1.5rem;
     }
 
     .reading-passage {
@@ -74,11 +75,6 @@
       margin-bottom: 1rem;
       color: #2c3e50;
     }
-    .reading-passage h3 {
-      margin: 1.2rem 0 0.6rem;
-      color: #34495e;
-      font-size: 1.1rem;
-    }
     .reading-passage p {
       margin-bottom: 1.2rem;
       text-align: justify;
@@ -91,12 +87,6 @@
       border-radius: 6px;
       overflow-y: auto;
       height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .questions-content {
-      flex-grow: 1;
-      overflow-y: auto;
     }
     .questions-section h3 {
       margin-bottom: 1rem;
@@ -118,30 +108,48 @@
     }
     .answer-input {
       width: 100%;
-      padding: 0.6rem;
+      padding: 0.75rem;
       border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 1rem;
       resize: vertical;
-      min-height: 45px;
+      min-height: 50px;
     }
-    .list-headings {
-      background: #f8f9fa;
-      padding: 1rem;
-      border-radius: 4px;
-      margin: 1rem 0;
-      line-height: 1.8;
+    .table-container {
+      overflow-x: auto;
+      margin-top: 0.8rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background-color: #f2f2f2;
     }
 
-    .next-btn-container {
-      margin-top: 1.5rem;
-      padding-top: 1rem;
+    /* Fixed bottom button area */
+    .bottom-nav {
+      padding: 1rem 0;
       border-top: 1px solid #eee;
-      text-align: right;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .save-status {
+      font-size: 0.95rem;
+      color: #28a745;
+      font-weight: 500;
     }
     .next-btn {
-      padding: 0.8rem 1.8rem;
-      font-size: 1rem;
+      padding: 1rem 2.5rem;
+      font-size: 1.15rem;
       background: #007bff;
       color: white;
       border: none;
@@ -149,153 +157,139 @@
       text-decoration: none;
       display: inline-block;
       cursor: pointer;
+      font-weight: 500;
     }
     .next-btn:hover {
       background: #0056b3;
-    }
-    .save-status {
-      font-size: 0.85rem;
-      color: #28a745;
-      margin-right: 1rem;
-      display: inline-block;
     }
   </style>
 </head>
 <body>
   <img src="ielts-logo.png" alt="IELTS Logo" class="logo">
   <div class="page-header">
-    <h1>Reading Passage 2: European Transport Systems 1990–2010</h1>
-    <p>You should spend about 20 minutes on Questions 14–26</p>
+    <h1>Reading Lesson: Stepwells</h1>
+    <p>You should spend about 20 minutes on Questions 1–13</p>
   </div>
 
   <div class="container">
     <div class="reading-passage">
-      <h2>EUROPEAN TRANSPORT SYSTEMS 1990–2010</h2>
-      <p style="text-align:center; font-style:italic; margin-bottom:1.5rem;">What have been the trends and what are the prospects for European transport systems?</p>
-
-      <h3>Paragraph A</h3>
-      <p>It is difficult to conceive of vigorous economic growth without an efficient transport system. Although modern information technologies can reduce the demand for physical transport by facilitating teleworking and teleservices, the requirement for transport continues to increase. There are two key factors behind this trend. For passenger transport, the determining factor is the spectacular growth in car use. The number of cars on European Union (EU) roads saw an increase of three million cars each year from 1990 to 2010, and in the next decade the EU will see a further substantial increase in its fleet.</p>
-
-      <h3>Paragraph B</h3>
-      <p>As far as goods transport is concerned, growth is due to a large extent to changes in the European economy and its system of production. In the last 20 years, as internal frontiers have been abolished, the EU has moved from a 'stock' economy to a 'flow' economy. This phenomenon has been emphasised by the relocation of some industries, particularly those which are labour intensive, to reduce production costs, even though the production site is hundreds or even thousands of kilometres away from the final assembly plant or away from users.</p>
-
-      <h3>Paragraph C</h3>
-      <p>The strong economic growth expected in countries which are candidates for entry to the EU will also increase transport flows, in particular road haulage traffic. In 1998, some of these countries already exported more than twice their 1990 volumes and imported more than five times their 1990 volumes. And although many candidate countries inherited a transport system which encourages rail, the distribution between modes has tipped sharply in favour of road transport since the 1990s. Between 1990 and 1998, road haulage increased by 19.4%, while during the same period rail haulage decreased by 43.5%, although – and this could benefit the enlarged EU – it is still on average at a much higher level than in existing member states.</p>
-
-      <h3>Paragraph D</h3>
-      <p>However, a new imperative – sustainable development – offers an opportunity for adapting the EU's common transport policy. This objective, agreed by the Gothenburg European Council, has to be achieved by integrating environmental considerations into Community policies, and shifting the balance between modes of transport lies at the heart of its strategy. The ambitious objective can only be fully achieved by 2020, but proposed measures are nonetheless a first essential step towards a sustainable transport system which will ideally be in place in 30 years' time, that is by 2040.</p>
-
-      <h3>Paragraph E</h3>
-      <p>In 1998, energy consumption in the transport sector was to blame for 28% of emissions of CO₂, the leading greenhouse gas. According to the latest estimates, if nothing is done to reverse the traffic growth trend, CO₂ emissions from transport can be expected to increase by around 50% to 1,113 billion tonnes by 2020, compared with the 739 billion tonnes recorded in 1990. Once again, road transport is the main culprit since it alone accounts for 84% of the CO₂ emissions attributable to transport. Using alternative fuels and improving energy efficiency is thus both an ecological necessity and a technological challenge.</p>
-
-      <h3>Paragraph F</h3>
-      <p>At the same time greater efforts must be made to achieve a modal shift. Such a change cannot be achieved overnight, all the less so after over half a century of constant deterioration in favour of road. This has reached such a pitch that today rail freight services are facing marginalisation, with just 8% of market share, and with international goods trains struggling along at an average speed of 18km/h. Three possible options have emerged.</p>
-
-      <h3>Paragraph G</h3>
-      <p>The first approach would consist of focusing on road transport solely through pricing. This option would not be accompanied by complementary measures in the other modes of transport. In the short term it might curb the growth in road transport through the better loading ratio of goods vehicles and occupancy rates of passenger vehicles expected as a result of the increase in the price of transport. However, the lack of measures available to revitalise other modes of transport would make it impossible for more sustainable modes of transport to take up the baton.</p>
-
-      <h3>Paragraph H</h3>
-      <p>The second approach also concentrates on road transport pricing but is accompanied by measures to increase the efficiency of the other modes (better quality of services, logistics, technology). However, this approach does not include investment in new infrastructure, nor does it guarantee better regional cohesion. It could help to achieve greater uncoupling than the first approach, but road transport would keep the lion's share of the market and continue to concentrate on saturated arteries, despite being the most polluting of the modes. It is therefore not enough to guarantee the necessary shift of the balance.</p>
-
-      <h3>Paragraph I</h3>
-      <p>The third approach, which is not new, comprises a series of measures ranging from pricing to revitalising alternative modes of transport and targeting investment in the trans-European network. This integrated approach would allow the market shares of the other modes to return to their 1998 levels and thus make a shift of balance. It is far more ambitious than it looks, bearing in mind the historical imbalance in favour of roads for the last fifty years, but would achieve a marked break in the link between road transport growth and economic growth, without placing restrictions on the mobility of people and goods.</p>
+      <h2>Stepwells</h2>
+      <p>During the sixth and seventh centuries, the inhabitants of the modern-day states of Gujarat and Rajasthan in north-western India developed a method of gaining access to clean, fresh groundwater during the dry season for drinking, bathing, watering animals and irrigation. However, the significance of this invention – the stepwell – goes beyond its utilitarian application.</p>
+      <p>Unique to this region, stepwells are often architecturally complex and vary widely in size and shape. During their heyday, they were places of gathering, of leisure and relaxation and of worship for villagers of all but the lowest classes. Most stepwells are found dotted round the desert areas of Gujarat (where they are called vav) and Rajasthan (where they are called baori), while a few also survive in Delhi. Some were located in or near villages as public spaces for the community; others were positioned beside roads as resting places for travellers.</p>
+      <p>As their name suggests, stepwells comprise a series of stone steps descending from ground level to the water source (normally an underground aquifer) as it recedes following the rains. When the water level was high, the user needed only to descend a few steps to reach it; when it was low, several levels would have to be negotiated.</p>
+      <p>Some wells are vast, open craters with hundreds of steps paving each sloping side, often in tiers. Others are more elaborate, with long stepped passages leading to the water via several storeys. Built from stone and supported by pillars, they also included pavilions that sheltered visitors from the relentless heat. But perhaps the most impressive features are the intricate decorative sculptures that embellish many stepwells, showing activities from fighting and dancing to everyday acts such as women combing their hair or churning butter.</p>
+      <p>Down the centuries, thousands of wells were constructed throughout north-western India, but the majority have now fallen into disuse; many are derelict and dry, as groundwater has been diverted for industrial use and the wells no longer reach the water table. Their condition hasn’t been helped by recent dry spells: southern Rajasthan suffered an eight-year drought between 1996 and 2004.</p>
+      <p>However, some important sites in Gujarat have recently undergone major restoration, and the state government announced in June last year that it plans to restore the stepwells throughout the state.</p>
+      <p>In Patan, the state’s ancient capital, the stepwell of Rani Ki Vav (Queen’s Stepwell) is perhaps the finest current example. It was built by Queen Udayamati during the late 11th century, but became silted up following a flood during the 13th century. But the Archaeological Survey of India began restoring it in the 1960s, and today it is in pristine condition. At 65 metres long, 20 metres wide and 27 metres deep, Rani Ki Vav features 500 sculptures carved into niches throughout the monument. Incredibly, in January 2001, this ancient structure survived an earthquake that measured 7.6 on the Richter scale.</p>
+      <p>Another example is the Surya Kund in Modhera, northern Gujarat, next to the Sun Temple, built by King Bhima I in 1026 to honour the sun god Surya. It actually resembles a tank (kund means reservoir or pond) rather than a well, but displays the hallmarks of stepwell architecture, including four sides of steps that descend to the bottom in a stunning geometrical formation. The terraces house 108 small, intricately carved shrines between the sets of steps.</p>
+      <p>Rajasthan also has a wealth of wells. The ancient city of Bundi, 200 kilometres south of Jaipur, is renowned for its architecture, including its stepwells.</p>
+      <p>One of the larger examples is Raniji Ki Baori, which was built by the queen of the region, Nathavatji, in 1699. At 46 metres deep, 20 metres wide and 40 metres long, the intricately carved monument is one of 21 baoris commissioned in the Bundi area by Nathavatji.</p>
+      <p>In the old ruined town of Abhaneri, about 95 kilometres east of Jaipur, is Chand Baori, one of India’s oldest and deepest wells; aesthetically it’s perhaps one of the most dramatic. Built in around 850 AD next to the temple of Harshat Mata, the baori comprises hundreds of zigzagging steps that run along three of its sides, steeply descending 11 storeys, resulting in a striking pattern when seen from afar. On the fourth side, verandas which are supported by ornate pillars overlook the steps.</p>
+      <p>Still in public use is Neemrana Ki Baori, located just off the Jaipur–Delhi highway. Constructed in around 1700, it is nine storeys deep, with the last two being underwater. At ground level, there are 86 colonnaded openings from where the visitor descends 170 steps to the deepest water source.</p>
+      <p>Today, following years of neglect, many of these monuments to medieval engineering have been saved by the Archaeological Survey of India, which has recognised the importance of preserving them as part of the country’s rich history. Tourists flock to wells in far-flung corners of north-western India to gaze in wonder at these architectural marvels from hundreds of years ago, which serve as a reminder of both the ingenuity and artistry of ancient civilisations and of the value of water to human existence.</p>
     </div>
 
     <div class="questions-section">
-      <div class="questions-content">
-        <h3>Questions 14–26</h3>
+      <h3>Questions 1–13</h3>
 
-        <div class="question-block">
-          <h4>Questions 14–21</h4>
-          <p><em>Reading Passage 2 has nine paragraphs, A–I.</em><br>
-          <em>Choose the correct heading for paragraphs A–E and G–I from the list of headings below.</em><br>
-          <em>Write the correct number, i–xi.</em></p>
+      <div class="question-block">
+        <h4>Questions 1–5</h4>
+        <p><em>Do the following statements agree with the information given in Reading Passage 1?</em></p>
+        <p><em>Write:</em><br>
+        <strong>TRUE</strong> if the statement agrees with the information<br>
+        <strong>FALSE</strong> if the statement contradicts the information<br>
+        <strong>NOT GIVEN</strong> if there is no information on this</p>
 
-          <div class="list-headings">
-            <strong>List of Headings</strong><br>
-            i &nbsp;&nbsp;A fresh and important long-term goal<br>
-            ii &nbsp;Charging for roads and improving other transport methods<br>
-            iii &nbsp;Changes affecting the distances goods may be transported<br>
-            iv &nbsp;Taking all the steps necessary to change transport patterns<br>
-            v &nbsp;&nbsp;The environmental costs of road transport<br>
-            vi &nbsp;The escalating cost of rail transport<br>
-            vii &nbsp;The need to achieve transport rebalance<br>
-            viii &nbsp;The rapid growth of private transport<br>
-            ix &nbsp;Plans to develop major road networks<br>
-            x &nbsp;&nbsp;Restricting road use through charging policies alone<br>
-            xi &nbsp;Transport trends in countries awaiting EU admission
-          </div>
-
-          <div class="question">
-            <label><strong>14.</strong> Paragraph A</label>
-            <textarea class="answer-input" id="ans14" placeholder="Write i–xi"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>15.</strong> Paragraph B</label>
-            <textarea class="answer-input" id="ans15" placeholder="Write i–xi"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>16.</strong> Paragraph C</label>
-            <textarea class="answer-input" id="ans16" placeholder="Write i–xi"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>17.</strong> Paragraph D</label>
-            <textarea class="answer-input" id="ans17" placeholder="Write i–xi"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>18.</strong> Paragraph E</label>
-            <textarea class="answer-input" id="ans18" placeholder="Write i–xi"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>19.</strong> Paragraph G</label>
-            <textarea class="answer-input" id="ans19" placeholder="Write i–xi"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>20.</strong> Paragraph H</label>
-            <textarea class="answer-input" id="ans20" placeholder="Write i–xi"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>21.</strong> Paragraph I</label>
-            <textarea class="answer-input" id="ans21" placeholder="Write i–xi"></textarea>
-          </div>
+        <div class="question">
+          <label><strong>1.</strong> Examples of ancient stepwells can be found all over the world.</label>
+          <textarea class="answer-input" id="ans1" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
         </div>
-
-        <div class="question-block">
-          <h4>Questions 22–26</h4>
-          <p><em>Do the following statements agree with the information given in Reading Passage 2?</em><br>
-          <em>Write:</em><br>
-          <strong>TRUE</strong> if the statement agrees with the information<br>
-          <strong>FALSE</strong> if the statement contradicts the information<br>
-          <strong>NOT GIVEN</strong> if there is no information on this</p>
-
-          <div class="question">
-            <label><strong>22.</strong> The need for transport is growing, despite technological developments.</label>
-            <textarea class="answer-input" id="ans22" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>23.</strong> To reduce production costs, some industries have been moved closer to their relevant consumers.</label>
-            <textarea class="answer-input" id="ans23" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>24.</strong> Cars are prohibitively expensive in some EU candidate countries.</label>
-            <textarea class="answer-input" id="ans24" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>25.</strong> The Gothenburg European Council was set up 30 years ago.</label>
-            <textarea class="answer-input" id="ans25" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
-          </div>
-          <div class="question">
-            <label><strong>26.</strong> By the end of this decade, CO₂ emissions from transport are predicted to reach 739 billion tonnes.</label>
-            <textarea class="answer-input" id="ans26" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
-          </div>
+        <div class="question">
+          <label><strong>2.</strong> Stepwells had a range of functions, in addition to those related to water collection.</label>
+          <textarea class="answer-input" id="ans2" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
+        </div>
+        <div class="question">
+          <label><strong>3.</strong> The few existing stepwells in Delhi are more attractive than those found elsewhere.</label>
+          <textarea class="answer-input" id="ans3" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
+        </div>
+        <div class="question">
+          <label><strong>4.</strong> It took workers many years to build the stone steps characteristic of stepwells.</label>
+          <textarea class="answer-input" id="ans4" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
+        </div>
+        <div class="question">
+          <label><strong>5.</strong> The number of steps above the water level in a stepwell altered during the course of a year.</label>
+          <textarea class="answer-input" id="ans5" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
         </div>
       </div>
 
-      <div class="next-btn-container">
-        <span class="save-status">✓ Answers saved automatically</span>
-        <a href="reading-passage3.html" class="next-btn">Next Passage →</a>
+      <div class="question-block">
+        <h4>Questions 6–8</h4>
+        <p><em>Answer the questions below. Choose ONE WORD ONLY from the passage for each answer.</em></p>
+        <div class="question">
+          <label><strong>6.</strong> Which part of some stepwells provided shade for people?</label>
+          <textarea class="answer-input" id="ans6" placeholder="Write your answer"></textarea>
+        </div>
+        <div class="question">
+          <label><strong>7.</strong> What type of serious climatic event, which took place in southern Rajasthan, is mentioned in the article?</label>
+          <textarea class="answer-input" id="ans7" placeholder="Write your answer"></textarea>
+        </div>
+        <div class="question">
+          <label><strong>8.</strong> Who are frequent visitors to stepwells nowadays?</label>
+          <textarea class="answer-input" id="ans8" placeholder="Write your answer"></textarea>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <h4>Questions 9–13</h4>
+        <p><em>Complete the table below. Choose ONE WORD AND/OR A NUMBER from the passage for each answer.</em></p>
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>Stepwell</th>
+              <th>Date</th>
+              <th>Features</th>
+              <th>Other notes</th>
+            </tr>
+            <tr>
+              <td>Rani Ki Vav</td>
+              <td>Late 11th century</td>
+              <td>As many as 500 sculptures decorate the monument</td>
+              <td>Restored in the 1960s<br>Excellent condition, despite the <textarea class="answer-input" id="ans9" placeholder="Answer 9"></textarea> of 2001</td>
+            </tr>
+            <tr>
+              <td>Surya Kund</td>
+              <td>1026</td>
+              <td>Steps on the <textarea class="answer-input" id="ans10" placeholder="Answer 10"></textarea> produce a geometrical pattern<br>Carved shrines</td>
+              <td>Looks more like a <textarea class="answer-input" id="ans11" placeholder="Answer 11"></textarea> than a well</td>
+            </tr>
+            <tr>
+              <td>Raniji Ki Baori</td>
+              <td>1699</td>
+              <td>Intricately carved monument</td>
+              <td>One of 21 baoris in the area commissioned by Queen Nathavatji</td>
+            </tr>
+            <tr>
+              <td>Chand Baori</td>
+              <td>850 AD</td>
+              <td>Steps take you down 11 storeys to the bottom</td>
+              <td>Old, deep and very dramatic<br>Has <textarea class="answer-input" id="ans12" placeholder="Answer 12"></textarea> which provide a view of the steps</td>
+            </tr>
+            <tr>
+              <td>Neemrana Ki Baori</td>
+              <td>1700</td>
+              <td>Has two <textarea class="answer-input" id="ans13" placeholder="Answer 13"></textarea> levels</td>
+              <td>Used by public today</td>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- Bottom navigation - very bottom of page -->
+  <div class="bottom-nav">
+    <span class="save-status">✓ Answers saved automatically</span>
+    <a href="reading-transport.html" class="next-btn">Next Passage →</a>
   </div>
 
   <script>
