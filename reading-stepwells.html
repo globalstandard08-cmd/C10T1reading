@@ -44,50 +44,47 @@
       color: #555;
     }
 
-    ::selection {
-      background-color: #ffeb3b;
-      color: #000;
-    }
-    ::-moz-selection {
-      background-color: #ffeb3b;
-      color: #000;
-    }
-
-    /* Main container - full height so boxes are big */
+    /* Main container - fills space */
     .container {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
       padding: 0 1.5rem;
       flex: 1;
-      min-height: calc(100vh - 180px);
+      height: calc(100vh - 180px); /* Fixed height so scrolling works */
     }
 
-    /* Reading Passage Box - BIG with visible scrollbar */
+    /* Reading Passage Box - SCROLLBAR FORCED */
     .reading-passage {
       background: #ffffff;
       padding: 1.5rem;
       border: 1px solid #ddd;
       border-radius: 6px;
       height: 100%;
-      overflow-y: scroll; /* Always show scrollbar */
+      overflow-y: scroll !important; /* Forces scrollbar always */
+      overflow-x: hidden;
     }
 
-    /* Custom visible scrollbar style */
+    /* Clear visible scrollbar for all browsers */
     .reading-passage::-webkit-scrollbar {
-      width: 14px;
+      width: 16px;
     }
     .reading-passage::-webkit-scrollbar-track {
-      background: #f0f0f0;
-      border-radius: 6px;
+      background: #e9e9e9;
+      border: 1px solid #ccc;
     }
     .reading-passage::-webkit-scrollbar-thumb {
-      background: #b0b0b0;
-      border-radius: 6px;
-      border: 3px solid #f0f0f0;
+      background: #a0a0a0;
+      border: 3px solid #e9e9e9;
+      border-radius: 8px;
     }
     .reading-passage::-webkit-scrollbar-thumb:hover {
-      background: #909090;
+      background: #808080;
+    }
+    /* Firefox support */
+    .reading-passage {
+      scrollbar-width: auto;
+      scrollbar-color: #a0a0a0 #e9e9e9;
     }
 
     .reading-passage h2 {
@@ -101,31 +98,37 @@
       text-align: justify;
     }
 
-    /* Questions Box - BIG with visible scrollbar */
+    /* Questions Box - SCROLLBAR FORCED */
     .questions-section {
       background: #fefefe;
       padding: 1.5rem;
       border: 1px solid #ddd;
       border-radius: 6px;
       height: 100%;
-      overflow-y: scroll; /* Always show scrollbar */
+      overflow-y: scroll !important; /* Forces scrollbar always */
+      overflow-x: hidden;
     }
 
     /* Same scrollbar style for questions */
     .questions-section::-webkit-scrollbar {
-      width: 14px;
+      width: 16px;
     }
     .questions-section::-webkit-scrollbar-track {
-      background: #f0f0f0;
-      border-radius: 6px;
+      background: #e9e9e9;
+      border: 1px solid #ccc;
     }
     .questions-section::-webkit-scrollbar-thumb {
-      background: #b0b0b0;
-      border-radius: 6px;
-      border: 3px solid #f0f0f0;
+      background: #a0a0a0;
+      border: 3px solid #e9e9e9;
+      border-radius: 8px;
     }
     .questions-section::-webkit-scrollbar-thumb:hover {
-      background: #909090;
+      background: #808080;
+    }
+    /* Firefox support */
+    .questions-section {
+      scrollbar-width: auto;
+      scrollbar-color: #a0a0a0 #e9e9e9;
     }
 
     .questions-section h3 {
@@ -174,7 +177,7 @@
       background-color: #f2f2f2;
     }
 
-    /* Bottom navigation - SMALL buttons, below boxes */
+    /* Bottom navigation - small buttons below */
     .bottom-nav {
       padding: 0.8rem 1.5rem;
       border-top: 1px solid #eee;
@@ -193,34 +196,25 @@
       display: flex;
       gap: 1rem;
     }
-    /* Small buttons as requested */
     .prev-btn {
-      padding: 0.5rem 1.2rem;
+      padding: 0.4rem 1rem;
       background-color: #6c757d;
       color: white;
       border: none;
       border-radius: 4px;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.85rem;
       cursor: pointer;
     }
-    .prev-btn:hover {
-      background-color: #545b62;
-    }
     .next-btn {
-      padding: 0.5rem 1.2rem;
+      padding: 0.4rem 1rem;
       background-color: #007bff;
       color: white;
       border: none;
       border-radius: 4px;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 0.85rem;
       cursor: pointer;
-    }
-    .next-btn:hover {
-      background-color: #0056b3;
     }
   </style>
 </head>
@@ -348,7 +342,7 @@
     </div>
   </div>
 
-  <!-- Bottom navigation with Previous and Next buttons -->
+  <!-- Bottom navigation -->
   <div class="bottom-nav">
     <span class="save-status">✓ Answers saved automatically</span>
     <div class="nav-buttons">
