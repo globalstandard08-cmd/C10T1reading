@@ -9,7 +9,7 @@
         body { 
             font-family: Arial, sans-serif; 
             min-height: 100vh; 
-            overflow-y: auto; /* Add main page scrollbar */
+            overflow-y: auto; /* Main page scrollbar */
         }
         
         /* Logo area */
@@ -20,7 +20,7 @@
             border-bottom: 1px solid #eee;
         }
         .logo {
-            height: 50px; /* Adjust height as needed */
+            height: 50px;
             width: auto;
             object-fit: contain;
         }
@@ -28,21 +28,19 @@
         h1 { text-align: center; padding: 10px; font-size: 20px; color: #2c3e50; }
         .subhead { text-align: center; font-style: italic; color: #555; margin-bottom: 15px; }
 
-        /* Scroll container - removed fixed height limit */
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             padding: 0 20px 20px;
-            min-height: calc(100vh - 220px);
         }
 
         .box {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 20px;
-            max-height: 75vh; /* Limit height so it doesn't go off-screen */
-            overflow-y: auto; /* Side scrollbar for each box */
+            max-height: 80vh;
+            overflow-y: auto;
             background: #fff;
             position: relative;
         }
@@ -111,7 +109,7 @@
             resize: vertical;
         }
 
-        /* Answer styling */
+        /* Answer styling - HIDDEN by default */
         .correct-answer {
             color: #28a745;
             font-weight: bold;
@@ -155,12 +153,23 @@
         }
         .prev { background: #6c757d; color: white; opacity: 0.6; }
         .next { background: #007bff; color: white; font-weight: bold; }
+
+        /* Table input styling */
+        .q-number {
+            font-weight: bold;
+            margin-right: 4px;
+        }
+        .inline-input {
+            width: 80px;
+            height: 30px;
+            display: inline;
+            padding: 2px 4px;
+        }
     </style>
 </head>
 <body>
     <!-- Logo -->
     <div class="logo-container">
-        <!-- Replace src with your actual logo file path -->
         <img src="ielts-logo.png" alt="IELTS Reading Practice Logo" class="logo">
     </div>
 
@@ -265,14 +274,14 @@
                         <td style="border:1px solid #ccc; padding:8px;">Rani Ki Vav</td>
                         <td style="border:1px solid #ccc; padding:8px;">Late 11th century</td>
                         <td style="border:1px solid #ccc; padding:8px;">As many as 500 sculptures decorate the monument</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Restored in the 1960s<br>Excellent condition, despite the <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="earthquake"></textarea> of 2001
-                        <div class="correct-answer" style="display:block; margin-left:85px;">Correct: earthquake</div></td>
+                        <td style="border:1px solid #ccc; padding:8px;">Restored in the 1960s<br>Excellent condition, despite the <span class="q-number">9.</span><textarea class="ans inline-input" data-answer="earthquake"></textarea> of 2001
+                        <div class="correct-answer">Correct: earthquake</div></td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Surya Kund</td>
                         <td style="border:1px solid #ccc; padding:8px;">1026</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Steps on the <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="four sides"></textarea> produce a geometrical pattern<br>Carved shrines</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Looks more like a <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="tank"></textarea> than a well</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Steps on the <span class="q-number">10.</span><textarea class="ans inline-input" data-answer="four sides"></textarea> produce a geometrical pattern<br>Carved shrines</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Looks more like a <span class="q-number">11.</span><textarea class="ans inline-input" data-answer="tank"></textarea> than a well</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Raniji Ki Baori</td>
@@ -284,12 +293,12 @@
                         <td style="border:1px solid #ccc; padding:8px;">Chand Baori</td>
                         <td style="border:1px solid #ccc; padding:8px;">850 AD</td>
                         <td style="border:1px solid #ccc; padding:8px;">Steps take you down 11 storeys to the bottom</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Old, deep and very dramatic<br>Has <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="verandas"></textarea> which give a view over the steps</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Old, deep and very dramatic<br>Has <span class="q-number">12.</span><textarea class="ans inline-input" data-answer="verandas"></textarea> which give a view over the steps</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Neemrana Ki Baori</td>
                         <td style="border:1px solid #ccc; padding:8px;">c. 1700</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Has two <textarea class="ans" style="width:80px; display:inline; height:30px;" data-answer="underwater"></textarea> levels</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Has two <span class="q-number">13.</span><textarea class="ans inline-input" data-answer="underwater"></textarea> levels</td>
                         <td style="border:1px solid #ccc; padding:8px;">Still used today</td>
                     </tr>
                 </table>
