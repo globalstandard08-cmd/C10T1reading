@@ -10,17 +10,32 @@
         h1 { text-align: center; padding: 10px; font-size: 20px; color: #2c3e50; }
         .subhead { text-align: center; font-style: italic; color: #555; margin-bottom: 15px; }
 
-        /* Fixed height = scroll works */
+        /* Highlight controls */
+        .highlight-controls {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .highlight-controls button {
+            padding: 6px 12px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-highlight { background: #ffd700; color: #333; }
+        .btn-clear { background: #dc3545; color: white; }
+
+        /* Scroll container */
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             padding: 0 20px;
             flex: 1;
-            height: calc(100vh - 150px);
+            height: calc(100vh - 180px);
         }
 
-        /* Working scrollbar */
         .box {
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -30,6 +45,7 @@
             background: #fff;
         }
 
+        /* Custom scrollbar */
         .box::-webkit-scrollbar { width: 14px; }
         .box::-webkit-scrollbar-track { background: #f1f1f1; }
         .box::-webkit-scrollbar-thumb { background: #b8b8b8; border-radius: 4px; }
@@ -38,11 +54,11 @@
 
         p { margin-bottom: 15px; line-height: 1.6; text-align: justify; }
         
-        /* Highlight text style restored */
-        .highlight {
+        /* User highlight style */
+        .user-highlight {
             background-color: #fff3cd;
-            padding: 2px 4px;
-            border-radius: 3px;
+            padding: 2px 3px;
+            border-radius: 2px;
         }
 
         .question { margin-bottom: 20px; }
@@ -56,72 +72,90 @@
             resize: vertical;
         }
 
-        .nav { padding: 15px 20px; display: flex; justify-content: space-between; border-top: 1px solid #eee; }
-        a { padding: 6px 15px; font-size: 14px; border-radius: 3px; text-decoration: none; cursor: pointer; }
+        /* Navigation buttons */
+        .nav { 
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            border-top: 1px solid #eee; 
+        }
+        .nav a, .nav span { 
+            padding: 8px 16px; 
+            font-size: 14px; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            cursor: pointer; 
+        }
         .prev { background: #6c757d; color: white; opacity: 0.6; }
-        .next { background: #007bff; color: white; }
+        .next { background: #007bff; color: white; font-weight: bold; }
     </style>
 </head>
 <body>
     <h1>Reading Passage 1</h1>
     <p class="subhead">You should spend about 20 minutes on Questions 1–13</p>
 
+    <!-- Highlight controls -->
+    <div class="highlight-controls">
+        <button class="btn-highlight" onclick="highlightSelection()">Highlight Selected Text</button>
+        <button class="btn-clear" onclick="clearAllHighlights()">Clear All Highlights</button>
+    </div>
+
     <div class="container">
-        <!-- Stepwells Passage with highlights -->
-        <div class="box">
+        <!-- Stepwells Passage -->
+        <div class="box" id="passage-text">
             <h2 style="text-align:center; margin-bottom:20px;">Stepwells</h2>
-            <p>During the sixth and seventh centuries, the inhabitants of the modern-day states of <span class="highlight">Gujarat and Rajasthan</span> in north-western India developed a method of gaining access to <span class="highlight">clean, fresh groundwater</span> during the dry season for drinking, bathing, watering animals and irrigation. However, the significance of this invention – the <span class="highlight">stepwell</span> – goes beyond its utilitarian application.</p>
+            <p>During the sixth and seventh centuries, the inhabitants of the modern-day states of Gujarat and Rajasthan in north-western India developed a method of gaining access to clean, fresh groundwater during the dry season for drinking, bathing, watering animals and irrigation. However, the significance of this invention – the stepwell – goes beyond its utilitarian application.</p>
             
-            <p>Unique to this region, stepwells are often <span class="highlight">architecturally complex</span> and vary widely in size and shape. During their heyday, they were places of gathering, of leisure and relaxation and of worship for villagers of all but the lowest classes. Most stepwells are found dotted round the desert areas of Gujarat (where they are called <span class="highlight">vav</span>) and Rajasthan (where they are called <span class="highlight">baori</span>), while a few also survive in Delhi. Some were located in or near villages as public spaces for the community; others were positioned beside roads as resting places for travellers.</p>
+            <p>Unique to this region, stepwells are often architecturally complex and vary widely in size and shape. During their heyday, they were places of gathering, of leisure and relaxation and of worship for villagers of all but the lowest classes. Most stepwells are found dotted round the desert areas of Gujarat (where they are called vav) and Rajasthan (where they are called baori), while a few also survive in Delhi. Some were located in or near villages as public spaces for the community; others were positioned beside roads as resting places for travellers.</p>
             
-            <p>As their name suggests, stepwells comprise a series of stone steps descending from ground level to the water source (normally an <span class="highlight">underground aquifer</span>) as it recedes following the rains. When the water level was high, the user needed only to descend a few steps to reach it; when it was low, several levels would have to be negotiated.</p>
+            <p>As their name suggests, stepwells comprise a series of stone steps descending from ground level to the water source (normally an underground aquifer) as it recedes following the rains. When the water level was high, the user needed only to descend a few steps to reach it; when it was low, several levels would have to be negotiated.</p>
             
-            <p>Some wells are vast, open craters with hundreds of steps paving each sloping side, often in tiers. Others are more elaborate, with long stepped passages leading to the water via several storeys. Built from stone and supported by pillars, they also included <span class="highlight">pavilions</span> that sheltered visitors from the relentless heat. But perhaps the most impressive features are the <span class="highlight">intricate decorative sculptures</span> that embellish many stepwells, showing activities from fighting and dancing to everyday acts such as women combing their hair or churning butter.</p>
+            <p>Some wells are vast, open craters with hundreds of steps paving each sloping side, often in tiers. Others are more elaborate, with long stepped passages leading to the water via several storeys. Built from stone and supported by pillars, they also included pavilions that sheltered visitors from the relentless heat. But perhaps the most impressive features are the intricate decorative sculptures that embellish many stepwells, showing activities from fighting and dancing to everyday acts such as women combing their hair or churning butter.</p>
             
-            <p>Down the centuries, thousands of wells were constructed throughout north-western India, but the majority have now fallen into disuse; many are derelict and dry, as groundwater has been diverted for industrial use and the wells no longer reach the water table. Their condition hasn’t been helped by recent dry spells: southern Rajasthan suffered an <span class="highlight">eight-year drought</span> between 1996 and 2004.</p>
+            <p>Down the centuries, thousands of wells were constructed throughout north-western India, but the majority have now fallen into disuse; many are derelict and dry, as groundwater has been diverted for industrial use and the wells no longer reach the water table. Their condition hasn’t been helped by recent dry spells: southern Rajasthan suffered an eight-year drought between 1996 and 2004.</p>
             
             <p>However, some important sites in Gujarat have recently undergone major restoration, and the state government announced in June last year that it plans to restore the stepwells throughout the state.</p>
             
-            <p>In Patan, the state’s ancient capital, the stepwell of <span class="highlight">Rani Ki Vav (Queen’s Stepwell)</span> is perhaps the finest current example. It was built by Queen Udayamati during the late 11th century, but became silted up following a flood during the 13th century. But the Archaeological Survey of India began restoring it in the 1960s, and today it is in pristine condition. At 65 metres long, 20 metres wide and 27 metres deep, Rani Ki Vav features <span class="highlight">500 sculptures</span> carved into niches throughout the monument. Incredibly, in January 2001, this ancient structure survived an <span class="highlight">earthquake</span> that measured 7.6 on the Richter scale.</p>
+            <p>In Patan, the state’s ancient capital, the stepwell of Rani Ki Vav (Queen’s Stepwell) is perhaps the finest current example. It was built by Queen Udayamati during the late 11th century, but became silted up following a flood during the 13th century. But the Archaeological Survey of India began restoring it in the 1960s, and today it is in pristine condition. At 65 metres long, 20 metres wide and 27 metres deep, Rani Ki Vav features 500 sculptures carved into niches throughout the monument. Incredibly, in January 2001, this ancient structure survived an earthquake that measured 7.6 on the Richter scale.</p>
             
-            <p>Another example is the <span class="highlight">Surya Kund</span> in Modhera, northern Gujarat, next to the Sun Temple, built by King Bhima I in 1026 to honour the sun god Surya. It actually resembles a tank (<span class="highlight">kund</span> means reservoir or pond) rather than a well, but displays the hallmarks of stepwell architecture, including <span class="highlight">four sides of steps</span> that descend to the bottom in a stunning geometrical formation. The terraces house <span class="highlight">108 small, intricately carved shrines</span> between the sets of steps.</p>
+            <p>Another example is the Surya Kund in Modhera, northern Gujarat, next to the Sun Temple, built by King Bhima I in 1026 to honour the sun god Surya. It actually resembles a tank (kund means reservoir or pond) rather than a well, but displays the hallmarks of stepwell architecture, including four sides of steps that descend to the bottom in a stunning geometrical formation. The terraces house 108 small, intricately carved shrines between the sets of steps.</p>
             
-            <p>Rajasthan also has a wealth of wells. The ancient city of <span class="highlight">Bundi</span>, 200 kilometres south of Jaipur, is renowned for its architecture, including its stepwells.</p>
+            <p>Rajasthan also has a wealth of wells. The ancient city of Bundi, 200 kilometres south of Jaipur, is renowned for its architecture, including its stepwells.</p>
             
-            <p>One of the larger examples is <span class="highlight">Raniji Ki Baori</span>, which was built by the queen of the region, Nathavatji, in 1699. At 46 metres deep, 20 metres wide and 40 metres long, the intricately carved monument is one of <span class="highlight">21 baoris</span> commissioned in the Bundi area by Nathavatji.</p>
+            <p>One of the larger examples is Raniji Ki Baori, which was built by the queen of the region, Nathavatji, in 1699. At 46 metres deep, 20 metres wide and 40 metres long, the intricately carved monument is one of 21 baoris commissioned in the Bundi area by Nathavatji.</p>
             
-            <p>In the old ruined town of <span class="highlight">Abhaneri</span>, about 95 kilometres east of Jaipur, is <span class="highlight">Chand Baori</span>, one of India’s oldest and deepest wells; aesthetically it’s perhaps one of the most dramatic. Built in around 850 AD next to the temple of Harshat Mata, the baori comprises hundreds of zigzagging steps that run along three of its sides, steeply descending <span class="highlight">11 storeys</span>, resulting in a striking pattern when seen from afar. On the fourth side, <span class="highlight">verandas</span> which are supported by ornate pillars overlook the steps.</p>
+            <p>In the old ruined town of Abhaneri, about 95 kilometres east of Jaipur, is Chand Baori, one of India’s oldest and deepest wells; aesthetically it’s perhaps one of the most dramatic. Built in around 850 AD next to the temple of Harshat Mata, the baori comprises hundreds of zigzagging steps that run along three of its sides, steeply descending 11 storeys, resulting in a striking pattern when seen from afar. On the fourth side, verandas which are supported by ornate pillars overlook the steps.</p>
             
-            <p>Still in public use is <span class="highlight">Neemrana Ki Baori</span>, located just off the Jaipur–Delhi highway. Constructed in around 1700, it is nine storeys deep, with the last two being <span class="highlight">underwater</span>. At ground level, there are 86 colonnaded openings from where the visitor descends 170 steps to the deepest water source.</p>
+            <p>Still in public use is Neemrana Ki Baori, located just off the Jaipur–Delhi highway. Constructed in around 1700, it is nine storeys deep, with the last two being underwater. At ground level, there are 86 colonnaded openings from where the visitor descends 170 steps to the deepest water source.</p>
             
-            <p>Today, following years of neglect, many of these monuments to medieval engineering have been saved by the Archaeological Survey of India, which has recognised the importance of preserving them as part of the country’s rich history. <span class="highlight">Tourists</span> flock to wells in far-flung corners of north-western India to gaze in wonder at these architectural marvels from hundreds of years ago, which serve as a reminder of both the ingenuity and artistry of ancient civilisations and of the value of water to human existence.</p>
+            <p>Today, following years of neglect, many of these monuments to medieval engineering have been saved by the Archaeological Survey of India, which has recognised the importance of preserving them as part of the country’s rich history. Tourists flock to wells in far-flung corners of north-western India to gaze in wonder at these architectural marvels from hundreds of years ago, which serve as a reminder of both the ingenuity and artistry of ancient civilisations and of the value of water to human existence.</p>
         </div>
 
-        <!-- Stepwells Questions -->
+        <!-- Questions -->
         <div class="box">
             <h3 style="margin-bottom:15px;">Questions 1–13</h3>
 
             <div class="question">
                 <h4>Questions 1–5</h4>
                 <p><em>Do the following statements agree with the information given in Reading Passage 1?</em></p>
-                <p><strong>TRUE</strong> if the statement agrees with the information<br>
+                <p><strong>TRUE</strong> if the statement agrees<br>
                 <strong>FALSE</strong> if the statement contradicts the information<br>
                 <strong>NOT GIVEN</strong> if there is no information on this</p>
 
                 <label><strong>1.</strong> Examples of ancient stepwells can be found all over the world.</label>
-                <textarea class="answer-input" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
+                <textarea class="ans"></textarea>
 
                 <label><strong>2.</strong> Stepwells had a range of functions, in addition to those related to water collection.</label>
-                <textarea class="answer-input" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
+                <textarea class="ans"></textarea>
 
                 <label><strong>3.</strong> The few existing stepwells in Delhi are more attractive than those found elsewhere.</label>
-                <textarea class="answer-input" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
+                <textarea class="ans"></textarea>
 
                 <label><strong>4.</strong> It took workers many years to build the stone steps characteristic of stepwells.</label>
-                <textarea class="answer-input" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
+                <textarea class="ans"></textarea>
 
                 <label><strong>5.</strong> The number of steps above the water level in a stepwell altered during the course of a year.</label>
-                <textarea class="answer-input" placeholder="Write TRUE / FALSE / NOT GIVEN"></textarea>
+                <textarea class="ans"></textarea>
             </div>
 
             <div class="question">
@@ -129,13 +163,13 @@
                 <p><em>Answer the questions below. Choose ONE WORD ONLY from the passage for each answer.</em></p>
 
                 <label><strong>6.</strong> Which part of some stepwells provided shade for people?</label>
-                <textarea class="answer-input" placeholder="Write your answer"></textarea>
+                <textarea class="ans"></textarea>
 
                 <label><strong>7.</strong> What type of serious climatic event, which took place in southern Rajasthan, is mentioned in the article?</label>
-                <textarea class="answer-input" placeholder="Write your answer"></textarea>
+                <textarea class="ans"></textarea>
 
                 <label><strong>8.</strong> Who are frequent visitors to stepwells nowadays?</label>
-                <textarea class="answer-input" placeholder="Write your answer"></textarea>
+                <textarea class="ans"></textarea>
             </div>
 
             <div class="question">
@@ -152,13 +186,13 @@
                         <td style="border:1px solid #ccc; padding:8px;">Rani Ki Vav</td>
                         <td style="border:1px solid #ccc; padding:8px;">Late 11th century</td>
                         <td style="border:1px solid #ccc; padding:8px;">As many as 500 sculptures decorate the monument</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Restored in the 1960s<br>Excellent condition, despite the <textarea class="answer-input" style="width:80px; display:inline; height:30px;"></textarea> of 2001</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Restored in the 1960s<br>Excellent condition, despite the <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> of 2001</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Surya Kund</td>
                         <td style="border:1px solid #ccc; padding:8px;">1026</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Steps on the <textarea class="answer-input" style="width:80px; display:inline; height:30px;"></textarea> produce a geometrical pattern<br>Carved shrines</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Looks more like a <textarea class="answer-input" style="width:80px; display:inline; height:30px;"></textarea> than a well</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Steps on the <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> produce a geometrical pattern<br>Carved shrines</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Looks more like a <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> than a well</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Raniji Ki Baori</td>
@@ -170,12 +204,12 @@
                         <td style="border:1px solid #ccc; padding:8px;">Chand Baori</td>
                         <td style="border:1px solid #ccc; padding:8px;">850 AD</td>
                         <td style="border:1px solid #ccc; padding:8px;">Steps take you down 11 storeys to the bottom</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Old, deep and very dramatic<br>Has <textarea class="answer-input" style="width:80px; display:inline; height:30px;"></textarea> which give a view over the steps</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Old, deep and very dramatic<br>Has <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> which give a view over the steps</td>
                     </tr>
                     <tr>
                         <td style="border:1px solid #ccc; padding:8px;">Neemrana Ki Baori</td>
                         <td style="border:1px solid #ccc; padding:8px;">c. 1700</td>
-                        <td style="border:1px solid #ccc; padding:8px;">Has two <textarea class="answer-input" style="width:80px; display:inline; height:30px;"></textarea> levels</td>
+                        <td style="border:1px solid #ccc; padding:8px;">Has two <textarea class="ans" style="width:80px; display:inline; height:30px;"></textarea> levels</td>
                         <td style="border:1px solid #ccc; padding:8px;">Still used today</td>
                     </tr>
                 </table>
@@ -183,26 +217,50 @@
         </div>
     </div>
 
+    <!-- Navigation -->
     <div class="nav">
         <span class="prev">← Previous Passage</span>
         <a href="reading-passage2.html" class="next">Next Passage →</a>
     </div>
 
-    <!-- Auto-save answers script -->
+    <!-- All functions: save answers, highlight, clear highlights -->
     <script>
-        // Load saved answers when page opens
-        window.addEventListener('load', function() {
-            const inputs = document.querySelectorAll('.answer-input');
-            inputs.forEach((input, index) => {
-                const saved = localStorage.getItem('stepwells_answer_' + index);
-                if (saved) input.value = saved;
-                
-                // Save automatically when typing
-                input.addEventListener('input', function() {
-                    localStorage.setItem('stepwells_answer_' + index, this.value);
-                });
+        // Auto-save and load answers
+        window.onload = function() {
+            document.querySelectorAll('.ans').forEach((el, i) => {
+                const key = 'stepwell_answer_' + i;
+                const saved = localStorage.getItem(key);
+                if (saved) el.value = saved;
+                el.addEventListener('input', () => localStorage.setItem(key, el.value));
             });
-        });
+        };
+
+        // Highlight selected text
+        function highlightSelection() {
+            const selection = window.getSelection();
+            if (!selection || selection.rangeCount === 0 || selection.toString().trim() === '') return;
+            
+            const range = selection.getRangeAt(0);
+            const span = document.createElement('span');
+            span.className = 'user-highlight';
+            span.textContent = selection.toString();
+            
+            range.deleteContents();
+            range.insertNode(span);
+            selection.removeAllRanges();
+        }
+
+        // Clear all highlights
+        function clearAllHighlights() {
+            document.querySelectorAll('.user-highlight').forEach(span => {
+                const parent = span.parentNode;
+                parent.replaceChild(document.createTextNode(span.textContent), span);
+                parent.normalize();
+            });
+        }
+
+        // Optional: Auto-highlight on double-click (can remove if not needed)
+        document.getElementById('passage-text').addEventListener('dblclick', highlightSelection);
     </script>
 </body>
 </html>
