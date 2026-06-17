@@ -23,7 +23,7 @@
     /* Logo */
     .logo {
       display: block;
-      width: 300px;
+      width: 350px;
       height: auto;
       margin: 1rem auto;
     }
@@ -63,7 +63,7 @@
       min-height: calc(100vh - 180px);
     }
 
-    /* Reading panel */
+    /* Reading panel - scrollbar enabled */
     .reading-passage {
       background: #ffffff;
       padding: 1.5rem;
@@ -83,7 +83,7 @@
       text-align: justify;
     }
 
-    /* Questions panel */
+    /* Questions panel - scrollbar enabled */
     .questions-section {
       background: #fefefe;
       padding: 1.5rem;
@@ -138,7 +138,7 @@
       background-color: #f2f2f2;
     }
 
-    /* Bottom navigation only */
+    /* Bottom navigation - updated with Previous button */
     .bottom-nav {
       padding: 1.2rem 1.5rem;
       border-top: 1px solid #eee;
@@ -152,6 +152,24 @@
       color: #28a745;
       font-weight: 500;
       font-size: 0.95rem;
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    .prev-btn {
+      padding: 0.8rem 2rem;
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .prev-btn:hover {
+      background-color: #545b62;
     }
     .next-btn {
       padding: 0.8rem 2rem;
@@ -293,10 +311,13 @@
     </div>
   </div>
 
-  <!-- Bottom navigation -->
+  <!-- Bottom navigation with Previous and Next buttons -->
   <div class="bottom-nav">
     <span class="save-status">✓ Answers saved automatically</span>
-    <a href="reading-passage2.html" class="next-btn">Next Passage →</a>
+    <div class="nav-buttons">
+      <a href="#" class="prev-btn">← Previous Passage</a>
+      <a href="reading-passage2.html" class="next-btn">Next Passage →</a>
+    </div>
   </div>
 
   <script>
