@@ -10,22 +10,6 @@
         h1 { text-align: center; padding: 10px; font-size: 20px; color: #2c3e50; }
         .subhead { text-align: center; font-style: italic; color: #555; margin-bottom: 15px; }
 
-        /* Highlight controls */
-        .highlight-controls {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .highlight-controls button {
-            padding: 6px 12px;
-            margin: 0 5px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .btn-highlight { background: #ffd700; color: #333; }
-        .btn-clear { background: #dc3545; color: white; }
-
         /* Scroll container */
         .container {
             display: grid;
@@ -33,7 +17,7 @@
             gap: 20px;
             padding: 0 20px;
             flex: 1;
-            height: calc(100vh - 180px);
+            height: calc(100vh - 120px);
         }
 
         .box {
@@ -43,6 +27,7 @@
             height: 100%;
             overflow-y: auto;
             background: #fff;
+            position: relative;
         }
 
         /* Custom scrollbar */
@@ -54,11 +39,49 @@
 
         p { margin-bottom: 15px; line-height: 1.6; text-align: justify; }
         
-        /* User highlight style */
+        /* Highlight style */
         .user-highlight {
             background-color: #fff3cd;
             padding: 2px 3px;
             border-radius: 2px;
+            cursor: pointer;
+        }
+
+        /* Floating highlight icon */
+        .highlight-tool {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 4px 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+        }
+        .highlight-tool:hover {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        /* Remove highlight option */
+        .remove-highlight {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #dc3545;
+            border-radius: 4px;
+            padding: 4px 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: #dc3545;
+        }
+        .remove-highlight:hover {
+            background: #ffebee;
         }
 
         .question { margin-bottom: 20px; }
@@ -94,15 +117,13 @@
     <h1>Reading Passage 1</h1>
     <p class="subhead">You should spend about 20 minutes on Questions 1–13</p>
 
-    <!-- Highlight controls -->
-    <div class="highlight-controls">
-        <button class="btn-highlight" onclick="highlightSelection()">Highlight Selected Text</button>
-        <button class="btn-clear" onclick="clearAllHighlights()">Clear All Highlights</button>
-    </div>
+    <!-- Floating tools -->
+    <div class="highlight-tool" id="highlightTool" title="Highlight selected text">✏️</div>
+    <div class="remove-highlight" id="removeTool" title="Remove highlight">✖️ Remove</div>
 
     <div class="container">
         <!-- Stepwells Passage -->
-        <div class="box" id="passage-text">
+        <div class="box" id="passageBox">
             <h2 style="text-align:center; margin-bottom:20px;">Stepwells</h2>
             <p>During the sixth and seventh centuries, the inhabitants of the modern-day states of Gujarat and Rajasthan in north-western India developed a method of gaining access to clean, fresh groundwater during the dry season for drinking, bathing, watering animals and irrigation. However, the significance of this invention – the stepwell – goes beyond its utilitarian application.</p>
             
@@ -223,44 +244,89 @@
         <a href="reading-passage2.html" class="next">Next Passage →</a>
     </div>
 
-    <!-- All functions: save answers, highlight, clear highlights -->
     <script>
-        // Auto-save and load answers
+        const passageBox = document.getElementById('passageBox');
+        const highlightTool = document.getElementById('highlightTool');
+        const removeTool = document.getElementById('removeTool');
+        let currentRange = null;
+
+        // --- Auto-save answers ---
         window.onload = function() {
             document.querySelectorAll('.ans').forEach((el, i) => {
-                const key = 'stepwell_answer_' + i;
+                const key = 'stepwell_ans_' + i;
                 const saved = localStorage.getItem(key);
                 if (saved) el.value = saved;
                 el.addEventListener('input', () => localStorage.setItem(key, el.value));
             });
         };
 
-        // Highlight selected text
-        function highlightSelection() {
+        // --- Show highlight icon when text is selected ---
+        passageBox.addEventListener('mouseup', function(e) {
             const selection = window.getSelection();
-            if (!selection || selection.rangeCount === 0 || selection.toString().trim() === '') return;
-            
-            const range = selection.getRangeAt(0);
+            if (!selection || selection.isCollapsed || selection.toString().trim() === '') {
+                highlightTool.style.display = 'none';
+                return;
+            }
+
+            currentRange = selection.getRangeAt(0);
+            const rect = currentRange.getBoundingClientRect();
+            const boxRect = passageBox.getBoundingClientRect();
+
+            // Position icon near selection
+            highlightTool.style.left = (rect.left - boxRect.left + rect.width / 2 - 15) + 'px';
+            highlightTool.style.top = (rect.top - boxRect.top - 35) + 'px';
+            highlightTool.style.display = 'block';
+        });
+
+        // --- Highlight when pencil icon is clicked ---
+        highlightTool.addEventListener('click', function() {
+            if (!currentRange) return;
+
             const span = document.createElement('span');
             span.className = 'user-highlight';
-            span.textContent = selection.toString();
-            
-            range.deleteContents();
-            range.insertNode(span);
-            selection.removeAllRanges();
-        }
+            span.textContent = currentRange.toString();
 
-        // Clear all highlights
-        function clearAllHighlights() {
-            document.querySelectorAll('.user-highlight').forEach(span => {
-                const parent = span.parentNode;
-                parent.replaceChild(document.createTextNode(span.textContent), span);
-                parent.normalize();
-            });
-        }
+            currentRange.deleteContents();
+            currentRange.insertNode(span);
 
-        // Optional: Auto-highlight on double-click (can remove if not needed)
-        document.getElementById('passage-text').addEventListener('dblclick', highlightSelection);
+            window.getSelection().removeAllRanges();
+            highlightTool.style.display = 'none';
+            currentRange = null;
+        });
+
+        // --- Show remove option when clicking existing highlight ---
+        passageBox.addEventListener('click', function(e) {
+            if (e.target.classList.contains('user-highlight')) {
+                const rect = e.target.getBoundingClientRect();
+                const boxRect = passageBox.getBoundingClientRect();
+
+                removeTool.style.left = (rect.left - boxRect.left + rect.width / 2 - 30) + 'px';
+                removeTool.style.top = (rect.top - boxRect.top - 35) + 'px';
+                removeTool.style.display = 'block';
+                removeTool.dataset.target = e.target;
+            } else {
+                removeTool.style.display = 'none';
+            }
+        });
+
+        // --- Remove highlight ---
+        removeTool.addEventListener('click', function() {
+            const span = this.dataset.target;
+            if (!span) return;
+
+            const parent = span.parentNode;
+            parent.replaceChild(document.createTextNode(span.textContent), span);
+            parent.normalize();
+
+            this.style.display = 'none';
+        });
+
+        // Hide tools when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!highlightTool.contains(e.target) && !passageBox.contains(e.target)) {
+                highlightTool.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
