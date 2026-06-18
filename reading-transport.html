@@ -270,7 +270,7 @@
         // --- Auto-save answers ---
         window.onload = function() {
             document.querySelectorAll('.ans').forEach((el, i) => {
-                const key = 'transport_ans_' + i; // Updated key name to match file
+                const key = 'transport_ans_' + i; // ONLY changed save key name
                 const saved = localStorage.getItem(key);
                 if (saved) el.value = saved;
                 el.addEventListener('input', () => localStorage.setItem(key, el.value));
