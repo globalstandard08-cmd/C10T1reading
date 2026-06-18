@@ -1,67 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reading Lessons</title>
-  <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      max-width: 700px; 
-      margin: 3rem auto; 
-      padding: 0 1.5rem; 
-      text-align: center; 
-    }
-    .logo { 
-      width: 250px; 
-      margin-bottom: 2rem; 
-    }
-    h1 { 
-      color: #2c3e50; 
-      margin-bottom: 2rem; 
-    }
-    .lesson-link { 
-      display: block; 
-      margin: 1rem 0; 
-      padding: 1rem; 
-      background: #f8f9fa; 
-      border: 1px solid #ddd; 
-      border-radius: 6px; 
-      text-decoration: none; 
-      color: #222; 
-      font-size: 1.1rem; 
-    }
-    .lesson-link:hover { 
-      background: #e9ecef; 
-    }
-    .notice { 
-      margin-top: 3rem; 
-      padding: 1rem; 
-      background: #fff3cd; 
-      border: 1px solid #ffe69c; 
-      font-size: 0.9rem; 
-      color: #856404; 
-      text-align: left; 
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reading Lessons</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background: #ffffff; padding: 40px 20px; text-align: center; }
+        .logo { height: 60px; margin-bottom: 20px; }
+        h1 { color: #2c3e50; font-size: 28px; margin-bottom: 40px; }
+        .lesson-bar {
+            display: block;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px 20px;
+            margin: 12px auto;
+            max-width: 500px;
+            text-decoration: none;
+            color: #212529;
+            font-size: 16px;
+            text-align: left;
+            padding-left: 40px;
+            position: relative;
+        }
+        .lesson-bar::before {
+            content: "☐";
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .lesson-bar:hover { background: #e9ecef; }
+        .notice {
+            max-width: 500px;
+            margin: 30px auto 0;
+            background: #fff3cd;
+            border: 1px solid #ffe69c;
+            padding: 12px;
+            font-size: 13px;
+            color: #856404;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
+    <img src="logo.png" alt="Global Standard English Learning Center" class="logo">
+    <h1>Reading Lessons</h1>
 
-  <!-- Logo -->
-  <img src="ielts-logo.png" alt="IELTS Logo" class="logo">
+    <!-- ✅ LESSON 1: Stepwells -->
+    <a href="reading-stepwells.html" class="lesson-bar">Reading Lesson 1: Stepwells</a>
 
-  <h1>Reading Lessons</h1>
+    <!-- ✅ LESSON 2: European Transport Systems — CORRECT NAME & FILE -->
+    <a href="reading-transport.html" class="lesson-bar">Reading Lesson 2: European Transport Systems</a>
 
-  <!-- Lesson Links -->
-  <a href="reading-stepwells.html" class="lesson-link">📖 Reading Lesson 1: Stepwells</a>
-  <a href="reading-transport.html" class="lesson-link">📖 Reading Lesson 2: European Transport Systems</a>
-  <a href="reading-passage3.html" class="lesson-link">📖 Reading Lesson 3: [Title here]</a>
+    <!-- ✅ LESSON 3 -->
+    <a href="reading-education.html" class="lesson-bar">Reading Lesson 3: [Title here]</a>
 
-  <!-- Copyright Notice -->
-  <div class="notice">
-    <strong>📚 IMPORTANT NOTICE</strong><br>
-    This material contains content from Cambridge University Press. All rights belong exclusively to the publisher. Used only for authorized educational purposes on assigned school laptops. No copying or sharing permitted.
-  </div>
-
+    <div class="notice">
+        <strong>IMPORTANT NOTICE</strong><br>
+        This material contains content from Cambridge University Press. All rights belong exclusively to the publisher. Use only for authorized educational purposes as organized school centre. No copying or
+    </div>
 </body>
 </html>
