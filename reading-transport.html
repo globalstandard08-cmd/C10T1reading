@@ -3,10 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading Passage 2</title>
+    <title>Reading Passage 2 - The Benefits of Bilingualism</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+        body { 
+            font-family: Arial, sans-serif; 
+            min-height: 100vh; 
+            overflow-y: auto; /* Main page scrollbar */
+        }
+        
+        /* Logo area */
+        .logo-container {
+            text-align: center;
+            padding: 8px 0;
+            background: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+        .logo {
+            height: 300px;
+            width: auto;
+            object-fit: contain;
+        }
+
         h1 { text-align: center; padding: 10px; font-size: 20px; color: #2c3e50; }
         .subhead { text-align: center; font-style: italic; color: #555; margin-bottom: 15px; }
 
@@ -14,20 +32,20 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            padding: 0 20px;
-            flex: 1;
-            height: calc(100vh - 150px);
+            padding: 0 20px 20px;
         }
 
         .box {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 20px;
-            height: 100%;
+            max-height: 80vh;
             overflow-y: auto;
             background: #fff;
+            position: relative;
         }
 
+        /* Custom scrollbar */
         .box::-webkit-scrollbar { width: 14px; }
         .box::-webkit-scrollbar-track { background: #f1f1f1; }
         .box::-webkit-scrollbar-thumb { background: #b8b8b8; border-radius: 4px; }
@@ -35,21 +53,136 @@
         .box { scrollbar-width: auto; scrollbar-color: #b8b8b8 #f1f1f1; }
 
         p { margin-bottom: 15px; line-height: 1.6; text-align: justify; }
-        .question { margin-bottom: 20px; }
-        textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 3px; min-height: 40px; }
+        
+        /* Highlight style */
+        .user-highlight {
+            background-color: #fff3cd;
+            padding: 2px 3px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
 
-        .nav { padding: 15px 20px; display: flex; justify-content: space-between; border-top: 1px solid #eee; }
-        a { padding: 6px 15px; font-size: 14px; border-radius: 3px; text-decoration: none; cursor: pointer; }
+        /* Floating tools */
+        .highlight-tool {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 4px 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+        }
+        .highlight-tool:hover {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+
+        .remove-highlight {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #dc3545;
+            border-radius: 4px;
+            padding: 4px 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: #dc3545;
+        }
+        .remove-highlight:hover {
+            background: #ffebee;
+        }
+
+        .question { margin-bottom: 20px; }
+        textarea { 
+            width: 100%; 
+            padding: 8px; 
+            margin-top: 5px; 
+            border: 1px solid #ccc; 
+            border-radius: 3px; 
+            min-height: 40px;
+            resize: vertical;
+        }
+
+        /* Answer styling - HIDDEN by default */
+        .correct-answer {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 4px;
+            display: none;
+        }
+
+        /* Bottom controls & navigation */
+        .bottom-controls {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            background: #fff;
+        }
+        .check-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: none;
+            background: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        .check-btn:hover {
+            background: #218838;
+        }
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+        .nav a, .nav span { 
+            padding: 8px 16px; 
+            font-size: 14px; 
+            border-radius: 4px; 
+            text-decoration: none; 
+            cursor: pointer; 
+            border: none;
+        }
         .prev { background: #6c757d; color: white; }
         .next { background: #007bff; color: white; opacity: 0.6; }
+
+        /* Table input styling */
+        .q-number {
+            font-weight: bold;
+            margin-right: 4px;
+        }
+        .inline-input {
+            width: 80px;
+            height: 30px;
+            display: inline;
+            padding: 2px 4px;
+        }
     </style>
 </head>
 <body>
+    <!-- Logo -->
+    <div class="logo-container">
+        <img src="ielts-logo.png" alt="IELTS Reading Practice Logo" class="logo">
+    </div>
+
     <h1>Reading Passage 2</h1>
     <p class="subhead">You should spend about 20 minutes on Questions 14–26</p>
 
+    <!-- Floating tools -->
+    <div class="highlight-tool" id="highlightTool" title="Highlight selected text">✏️</div>
+    <div class="remove-highlight" id="removeTool" title="Remove highlight">✖️ Remove</div>
+
     <div class="container">
-        <div class="box">
+        <!-- Bilingualism Passage -->
+        <div class="box" id="passageBox">
             <h2 style="text-align:center; margin-bottom:20px;">The Benefits of Bilingualism</h2>
             <p>For much of the 20th century, research into the effects of bilingualism was dominated by the belief that speaking two languages was detrimental to a child’s development. Early studies suggested that bilingual children had lower IQ scores, performed worse academically, and experienced confusion in language processing. However, these findings were later discredited because they failed to account for socioeconomic factors: many of the children studied came from immigrant families with lower incomes and less access to education, rather than bilingualism itself being the cause of lower performance.</p>
             <p>Modern research has completely reversed this view. Today, it is widely accepted that bilingualism offers significant cognitive advantages. One of the most well-documented benefits is enhanced executive function — the set of mental processes that enables us to plan, focus attention, remember instructions, and juggle multiple tasks successfully. Because bilingual individuals constantly switch between languages, they regularly exercise their ability to select relevant information and ignore distractions. This constant mental training strengthens the brain’s control systems, leading to better problem-solving skills, greater mental flexibility, and improved ability to focus on important details.</p>
@@ -60,37 +193,167 @@
             <p>In conclusion, the view that bilingualism is a disadvantage has been thoroughly overturned. From enhanced cognitive flexibility and better executive function to protection against dementia and improved cultural awareness, speaking two languages offers lifelong benefits. Whether acquired in childhood or adulthood, bilingualism is a valuable asset that strengthens the brain and enriches personal and professional life.</p>
         </div>
 
+        <!-- Questions -->
         <div class="box">
             <h3 style="margin-bottom:15px;">Questions 14–26</h3>
+
             <div class="question">
                 <h4>Questions 14–19</h4>
                 <p><em>Choose the correct letter A, B, C or D.</em></p>
-                <label>14. Early 20th century research suggested bilingualism was:</label><textarea></textarea>
-                <label>15. Why were early studies unreliable?</label><textarea></textarea>
-                <label>16. The main cognitive benefit is:</label><textarea></textarea>
-                <label>17. Brain imaging shows bilingualism:</label><textarea></textarea>
-                <label>18. Cognitive reserve helps by:</label><textarea></textarea>
-                <label>19. Raising bilingual children is:</label><textarea></textarea>
+
+                <label><strong>14.</strong> Early 20th century research suggested bilingualism was:</label>
+                <textarea class="ans" data-answer="detrimental / a disadvantage / harmful"></textarea>
+                <div class="correct-answer">Correct answer: detrimental / harmful / a disadvantage</div>
+
+                <label><strong>15.</strong> Why were early studies unreliable?</label>
+                <textarea class="ans" data-answer="ignored socioeconomic factors"></textarea>
+                <div class="correct-answer">Correct answer: ignored socioeconomic factors / did not consider background</div>
+
+                <label><strong>16.</strong> The main cognitive benefit is:</label>
+                <textarea class="ans" data-answer="enhanced executive function"></textarea>
+                <div class="correct-answer">Correct answer: enhanced executive function / better mental control</div>
+
+                <label><strong>17.</strong> Brain imaging shows bilingualism:</label>
+                <textarea class="ans" data-answer="changes brain structure / increases grey matter"></textarea>
+                <div class="correct-answer">Correct answer: changes brain structure / increases grey matter density</div>
+
+                <label><strong>18.</strong> Cognitive reserve helps by:</label>
+                <textarea class="ans" data-answer="compensating for brain damage"></textarea>
+                <div class="correct-answer">Correct answer: compensating for damage / maintaining function</div>
+
+                <label><strong>19.</strong> Raising bilingual children is:</label>
+                <textarea class="ans" data-answer="safe / beneficial / not harmful"></textarea>
+                <div class="correct-answer">Correct answer: safe / beneficial / normal development</div>
             </div>
+
             <div class="question">
                 <h4>Questions 20–23</h4>
                 <p><em>Complete the summary with NO MORE THAN TWO WORDS.</em></p>
-                <p>Bilingualism improves 20 ______ and helps ignore 21 ______. It delays 22 ______ in older age and builds greater 23 ______.</p>
-                <textarea></textarea>
+
+                <p>Bilingualism improves <span class="q-number">20.</span> <textarea class="ans inline-input" data-answer="executive function"></textarea> and helps ignore <span class="q-number">21.</span> <textarea class="ans inline-input" data-answer="distractions"></textarea>. It delays <span class="q-number">22.</span> <textarea class="ans inline-input" data-answer="dementia"></textarea> in older age and builds greater <span class="q-number">23.</span> <textarea class="ans inline-input" data-answer="cognitive reserve"></textarea>.</p>
             </div>
+
             <div class="question">
                 <h4>Questions 24–26</h4>
-                <p><em>TRUE/FALSE/NOT GIVEN</em></p>
-                <label>24. Adults cannot get the same benefits as children.</label><textarea></textarea>
-                <label>25. Bilingualism delays dementia regardless of education.</label><textarea></textarea>
-                <label>26. Bilingual children mix languages until teenage years.</label><textarea></textarea>
+                <p><em>TRUE / FALSE / NOT GIVEN</em></p>
+
+                <label><strong>24.</strong> Adults cannot get the same benefits as children.</label>
+                <textarea class="ans" data-answer="FALSE"></textarea>
+                <div class="correct-answer">Correct answer: FALSE</div>
+
+                <label><strong>25.</strong> Bilingualism delays dementia regardless of education.</label>
+                <textarea class="ans" data-answer="TRUE"></textarea>
+                <div class="correct-answer">Correct answer: TRUE</div>
+
+                <label><strong>26.</strong> Bilingual children mix languages until teenage years.</label>
+                <textarea class="ans" data-answer="FALSE"></textarea>
+                <div class="correct-answer">Correct answer: FALSE</div>
             </div>
         </div>
     </div>
 
-    <div class="nav">
-        <a href="reading-stepwells.html" class="prev">← Previous Passage</a>
-        <span class="next">Next Passage →</span>
+    <!-- Bottom controls & navigation -->
+    <div class="bottom-controls">
+        <button class="check-btn" onclick="toggleAnswers()">Show / Hide Answers</button>
+        <div class="nav">
+            <a href="reading-stepwells.html" class="prev">← Previous Passage</a>
+            <span class="next">Next Passage →</span>
+        </div>
     </div>
+
+    <script>
+        const passageBox = document.getElementById('passageBox');
+        const highlightTool = document.getElementById('highlightTool');
+        const removeTool = document.getElementById('removeTool');
+        let currentRange = null;
+
+        // --- Auto-save answers ---
+        window.onload = function() {
+            document.querySelectorAll('.ans').forEach((el, i) => {
+                const key = 'bilingual_ans_' + i;
+                const saved = localStorage.getItem(key);
+                if (saved) el.value = saved;
+                el.addEventListener('input', () => localStorage.setItem(key, el.value));
+            });
+        };
+
+        // --- Show highlight icon when text is selected ---
+        passageBox.addEventListener('mouseup', function(e) {
+            const selection = window.getSelection();
+            if (!selection || selection.isCollapsed || selection.toString().trim() === '') {
+                highlightTool.style.display = 'none';
+                return;
+            }
+
+            currentRange = selection.getRangeAt(0);
+            const rect = currentRange.getBoundingClientRect();
+            const boxRect = passageBox.getBoundingClientRect();
+
+            highlightTool.style.left = (rect.left - boxRect.left + rect.width / 2 - 15) + 'px';
+            highlightTool.style.top = (rect.top - boxRect.top - 35) + 'px';
+            highlightTool.style.display = 'block';
+        });
+
+        // --- Highlight when pencil icon is clicked ---
+        highlightTool.addEventListener('click', function() {
+            if (!currentRange) return;
+
+            const span = document.createElement('span');
+            span.className = 'user-highlight';
+            span.textContent = currentRange.toString();
+
+            currentRange.deleteContents();
+            currentRange.insertNode(span);
+
+            window.getSelection().removeAllRanges();
+            highlightTool.style.display = 'none';
+            currentRange = null;
+        });
+
+        // --- Show remove option when clicking existing highlight ---
+        passageBox.addEventListener('click', function(e) {
+            if (e.target.classList.contains('user-highlight')) {
+                const rect = e.target.getBoundingClientRect();
+                const boxRect = passageBox.getBoundingClientRect();
+
+                removeTool.style.left = (rect.left - boxRect.left + rect.width / 2 - 30) + 'px';
+                removeTool.style.top = (rect.top - boxRect.top - 35) + 'px';
+                removeTool.style.display = 'block';
+                removeTool.dataset.target = e.target;
+            } else {
+                removeTool.style.display = 'none';
+            }
+        });
+
+        // --- Fixed Remove highlight function ---
+        removeTool.addEventListener('click', function() {
+            const span = this.dataset.target;
+            if (!span || !span.parentNode) return;
+
+            const parent = span.parentNode;
+            const textNode = document.createTextNode(span.textContent);
+            parent.replaceChild(textNode, span);
+            parent.normalize();
+
+            this.style.display = 'none';
+            delete this.dataset.target;
+        });
+
+        // Hide tools when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!highlightTool.contains(e.target) && !passageBox.contains(e.target) && !removeTool.contains(e.target)) {
+                highlightTool.style.display = 'none';
+                removeTool.style.display = 'none';
+            }
+        });
+
+        // --- Toggle show/hide answers ---
+        function toggleAnswers() {
+            const answers = document.querySelectorAll('.correct-answer');
+            answers.forEach(ans => {
+                ans.style.display = ans.style.display === 'block' ? 'none' : 'block';
+            });
+        }
+    </script>
 </body>
 </html>
