@@ -9,10 +9,9 @@
         body { 
             font-family: Arial, sans-serif; 
             min-height: 100vh; 
-            overflow-y: auto; /* Main page scrollbar */
+            overflow-y: auto;
         }
         
-        /* Logo area */
         .logo-container {
             text-align: center;
             padding: 8px 0;
@@ -45,7 +44,6 @@
             position: relative;
         }
 
-        /* Custom scrollbar */
         .box::-webkit-scrollbar { width: 14px; }
         .box::-webkit-scrollbar-track { background: #f1f1f1; }
         .box::-webkit-scrollbar-thumb { background: #b8b8b8; border-radius: 4px; }
@@ -54,7 +52,6 @@
 
         p { margin-bottom: 15px; line-height: 1.6; text-align: justify; }
         
-        /* Highlight style */
         .user-highlight {
             background-color: #fff3cd;
             padding: 2px 3px;
@@ -62,7 +59,6 @@
             cursor: pointer;
         }
 
-        /* Floating tools */
         .highlight-tool {
             position: absolute;
             background: #fff;
@@ -109,7 +105,6 @@
             resize: vertical;
         }
 
-        /* Answer styling - HIDDEN by default */
         .correct-answer {
             color: #28a745;
             font-weight: bold;
@@ -117,7 +112,6 @@
             display: none;
         }
 
-        /* Bottom controls & navigation */
         .bottom-controls {
             padding: 15px 20px;
             border-top: 1px solid #eee;
@@ -154,7 +148,6 @@
         .prev { background: #6c757d; color: white; }
         .next { background: #007bff; color: white; opacity: 0.6; }
 
-        /* Table input styling */
         .q-number {
             font-weight: bold;
             margin-right: 4px;
@@ -168,7 +161,6 @@
     </style>
 </head>
 <body>
-    <!-- Logo -->
     <div class="logo-container">
         <img src="ielts-logo.png" alt="IELTS Reading Practice Logo" class="logo">
     </div>
@@ -176,12 +168,10 @@
     <h1>Reading Passage 2</h1>
     <p class="subhead">You should spend about 20 minutes on Questions 14–26</p>
 
-    <!-- Floating tools -->
     <div class="highlight-tool" id="highlightTool" title="Highlight selected text">✏️</div>
     <div class="remove-highlight" id="removeTool" title="Remove highlight">✖️ Remove</div>
 
     <div class="container">
-        <!-- Bilingualism Passage -->
         <div class="box" id="passageBox">
             <h2 style="text-align:center; margin-bottom:20px;">The Benefits of Bilingualism</h2>
             <p>For much of the 20th century, research into the effects of bilingualism was dominated by the belief that speaking two languages was detrimental to a child’s development. Early studies suggested that bilingual children had lower IQ scores, performed worse academically, and experienced confusion in language processing. However, these findings were later discredited because they failed to account for socioeconomic factors: many of the children studied came from immigrant families with lower incomes and less access to education, rather than bilingualism itself being the cause of lower performance.</p>
@@ -193,7 +183,6 @@
             <p>In conclusion, the view that bilingualism is a disadvantage has been thoroughly overturned. From enhanced cognitive flexibility and better executive function to protection against dementia and improved cultural awareness, speaking two languages offers lifelong benefits. Whether acquired in childhood or adulthood, bilingualism is a valuable asset that strengthens the brain and enriches personal and professional life.</p>
         </div>
 
-        <!-- Questions -->
         <div class="box">
             <h3 style="margin-bottom:15px;">Questions 14–26</h3>
 
@@ -252,12 +241,10 @@
         </div>
     </div>
 
-    <!-- Bottom controls & navigation -->
     <div class="bottom-controls">
         <button class="check-btn" onclick="toggleAnswers()">Show / Hide Answers</button>
         <div class="nav">
-            <!-- CORRECT LINK to your Passage 1 file name -->
-            <a href="reading-stepwells.html" class="prev">← Previous Passage</a>
+            <a href="reading-transport.html" class="prev">← Previous Passage</a>
             <span class="next">Next Passage →</span>
         </div>
     </div>
@@ -268,10 +255,8 @@
         const removeTool = document.getElementById('removeTool');
         let currentRange = null;
 
-        // --- Auto-save answers ---
         window.onload = function() {
             document.querySelectorAll('.ans').forEach((el, i) => {
-                // CORRECT save key name for this file
                 const key = 'transport_ans_' + i;
                 const saved = localStorage.getItem(key);
                 if (saved) el.value = saved;
@@ -279,45 +264,36 @@
             });
         };
 
-        // --- Show highlight icon when text is selected ---
         passageBox.addEventListener('mouseup', function(e) {
             const selection = window.getSelection();
             if (!selection || selection.isCollapsed || selection.toString().trim() === '') {
                 highlightTool.style.display = 'none';
                 return;
             }
-
             currentRange = selection.getRangeAt(0);
             const rect = currentRange.getBoundingClientRect();
             const boxRect = passageBox.getBoundingClientRect();
-
             highlightTool.style.left = (rect.left - boxRect.left + rect.width / 2 - 15) + 'px';
             highlightTool.style.top = (rect.top - boxRect.top - 35) + 'px';
             highlightTool.style.display = 'block';
         });
 
-        // --- Highlight when pencil icon is clicked ---
         highlightTool.addEventListener('click', function() {
             if (!currentRange) return;
-
             const span = document.createElement('span');
             span.className = 'user-highlight';
             span.textContent = currentRange.toString();
-
             currentRange.deleteContents();
             currentRange.insertNode(span);
-
             window.getSelection().removeAllRanges();
             highlightTool.style.display = 'none';
             currentRange = null;
         });
 
-        // --- Show remove option when clicking existing highlight ---
         passageBox.addEventListener('click', function(e) {
             if (e.target.classList.contains('user-highlight')) {
                 const rect = e.target.getBoundingClientRect();
                 const boxRect = passageBox.getBoundingClientRect();
-
                 removeTool.style.left = (rect.left - boxRect.left + rect.width / 2 - 30) + 'px';
                 removeTool.style.top = (rect.top - boxRect.top - 35) + 'px';
                 removeTool.style.display = 'block';
@@ -327,21 +303,17 @@
             }
         });
 
-        // --- Fixed Remove highlight function ---
         removeTool.addEventListener('click', function() {
             const span = this.dataset.target;
             if (!span || !span.parentNode) return;
-
             const parent = span.parentNode;
             const textNode = document.createTextNode(span.textContent);
             parent.replaceChild(textNode, span);
             parent.normalize();
-
             this.style.display = 'none';
             delete this.dataset.target;
         });
 
-        // Hide tools when clicking outside
         document.addEventListener('click', function(e) {
             if (!highlightTool.contains(e.target) && !passageBox.contains(e.target) && !removeTool.contains(e.target)) {
                 highlightTool.style.display = 'none';
@@ -349,7 +321,6 @@
             }
         });
 
-        // --- Toggle show/hide answers ---
         function toggleAnswers() {
             const answers = document.querySelectorAll('.correct-answer');
             answers.forEach(ans => {
