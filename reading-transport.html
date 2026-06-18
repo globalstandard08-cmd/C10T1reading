@@ -3,197 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reading Passage 2 - The Benefits of Bilingualism</title>
+    <title>Reading Lesson 2 - European Transport Systems</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: Arial, sans-serif; 
-            min-height: 100vh; 
-            overflow-y: auto;
-        }
-        
-        /* Logo area */
-        .logo-container {
-            text-align: center;
-            padding: 8px 0;
-            background: #f8f9fa;
-            border-bottom: 1px solid #eee;
-        }
-        .logo {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-        }
-
+        body { font-family: Arial, sans-serif; min-height: 100vh; overflow-y: auto; }
+        .logo-container { text-align: center; padding: 8px 0; background: #f8f9fa; border-bottom: 1px solid #eee; }
+        .logo { height: 50px; width: auto; object-fit: contain; }
         h1 { text-align: center; padding: 10px; font-size: 20px; color: #2c3e50; }
         .subhead { text-align: center; font-style: italic; color: #555; margin-bottom: 15px; }
-
-        .container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding: 0 20px 20px;
-        }
-
-        .box {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            max-height: 80vh;
-            overflow-y: auto;
-            background: #fff;
-            position: relative;
-        }
-
-        /* Custom scrollbar - SAME AS PASSAGE 1 */
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 20px 20px; }
+        .box { border: 1px solid #ccc; border-radius: 5px; padding: 20px; max-height: 80vh; overflow-y: auto; background: #fff; position: relative; }
         .box::-webkit-scrollbar { width: 14px; }
         .box::-webkit-scrollbar-track { background: #f1f1f1; }
         .box::-webkit-scrollbar-thumb { background: #b8b8b8; border-radius: 4px; }
         .box::-webkit-scrollbar-thumb:hover { background: #999; }
         .box { scrollbar-width: auto; scrollbar-color: #b8b8b8 #f1f1f1; }
-
         p { margin-bottom: 15px; line-height: 1.6; text-align: justify; }
-        
-        /* Highlight style - SAME AS PASSAGE 1 */
-        .user-highlight {
-            background-color: #fff3cd;
-            padding: 2px 3px;
-            border-radius: 2px;
-            cursor: pointer;
-        }
-
-        /* Floating tools - SAME AS PASSAGE 1 */
-        .highlight-tool {
-            position: absolute;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 4px 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-            z-index: 1000;
-            display: none;
-            cursor: pointer;
-            font-size: 16px;
-            color: #333;
-        }
-        .highlight-tool:hover {
-            background: #fff3cd;
-            border-color: #ffc107;
-        }
-
-        .remove-highlight {
-            position: absolute;
-            background: #fff;
-            border: 1px solid #dc3545;
-            border-radius: 4px;
-            padding: 4px 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-            z-index: 1000;
-            display: none;
-            cursor: pointer;
-            font-size: 14px;
-            color: #dc3545;
-        }
-        .remove-highlight:hover {
-            background: #ffebee;
-        }
-
+        .user-highlight { background-color: #fff3cd; padding: 2px 3px; border-radius: 2px; cursor: pointer; }
+        .highlight-tool { position: absolute; background: #fff; border: 1px solid #ccc; border-radius: 4px; padding: 4px 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 1000; display: none; cursor: pointer; font-size: 16px; color: #333; }
+        .highlight-tool:hover { background: #fff3cd; border-color: #ffc107; }
+        .remove-highlight { position: absolute; background: #fff; border: 1px solid #dc3545; border-radius: 4px; padding: 4px 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); z-index: 1000; display: none; cursor: pointer; font-size: 14px; color: #dc3545; }
+        .remove-highlight:hover { background: #ffebee; }
         .question { margin-bottom: 20px; }
-        textarea { 
-            width: 100%; 
-            padding: 8px; 
-            margin-top: 5px; 
-            border: 1px solid #ccc; 
-            border-radius: 3px; 
-            min-height: 40px;
-            resize: vertical;
-        }
-
-        /* Answer styling - HIDDEN by default - SAME AS PASSAGE 1 */
-        .correct-answer {
-            color: #28a745;
-            font-weight: bold;
-            margin-top: 4px;
-            display: none;
-        }
-
-        /* Bottom controls & navigation - SAME AS PASSAGE 1 */
-        .bottom-controls {
-            padding: 15px 20px;
-            border-top: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            background: #fff;
-        }
-        .check-btn {
-            padding: 8px 16px;
-            font-size: 14px;
-            border-radius: 4px;
-            border: none;
-            background: #28a745;
-            color: white;
-            cursor: pointer;
-        }
-        .check-btn:hover {
-            background: #218838;
-        }
-        .nav {
-            display: flex;
-            gap: 10px;
-        }
-        .nav a, .nav span { 
-            padding: 8px 16px; 
-            font-size: 14px; 
-            border-radius: 4px; 
-            text-decoration: none; 
-            cursor: pointer; 
-            border: none;
-        }
+        textarea { width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 3px; min-height: 40px; resize: vertical; }
+        .correct-answer { color: #28a745; font-weight: bold; margin-top: 4px; display: none; }
+        .bottom-controls { padding: 15px 20px; border-top: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; gap: 15px; background: #fff; }
+        .check-btn { padding: 8px 16px; font-size: 14px; border-radius: 4px; border: none; background: #28a745; color: white; cursor: pointer; }
+        .check-btn:hover { background: #218838; }
+        .nav { display: flex; gap: 10px; }
+        .nav a, .nav span { padding: 8px 16px; font-size: 14px; border-radius: 4px; text-decoration: none; cursor: pointer; border: none; }
         .prev { background: #6c757d; color: white; }
         .next { background: #007bff; color: white; opacity: 0.6; }
-
-        /* Table input styling - SAME AS PASSAGE 1 */
-        .q-number {
-            font-weight: bold;
-            margin-right: 4px;
-        }
-        .inline-input {
-            width: 80px;
-            height: 30px;
-            display: inline;
-            padding: 2px 4px;
-        }
+        .q-number { font-weight: bold; margin-right: 4px; }
+        .inline-input { width: 80px; height: 30px; display: inline; padding: 2px 4px; }
     </style>
 </head>
 <body>
-    <!-- Logo -->
     <div class="logo-container">
-        <img src="ielts-logo.png" alt="IELTS Reading Practice Logo" class="logo">
+        <img src="ielts-logo.png" alt="Global Standard English Learning Center" class="logo">
     </div>
 
-    <h1>Reading Passage 2</h1>
+    <h1>Reading Lesson 2</h1>
     <p class="subhead">You should spend about 20 minutes on Questions 14–26</p>
 
-    <!-- Floating tools -->
     <div class="highlight-tool" id="highlightTool" title="Highlight selected text">✏️</div>
     <div class="remove-highlight" id="removeTool" title="Remove highlight">✖️ Remove</div>
 
     <div class="container">
-        <!-- YOUR PASSAGE 2 CONTENT -->
         <div class="box" id="passageBox">
-            <h2 style="text-align:center; margin-bottom:20px;">The Benefits of Bilingualism</h2>
-            <p>For much of the 20th century, research into the effects of bilingualism was dominated by the belief that speaking two languages was detrimental to a child’s development. Early studies suggested that bilingual children had lower IQ scores, performed worse academically, and experienced confusion in language processing. However, these findings were later discredited because they failed to account for socioeconomic factors: many of the children studied came from immigrant families with lower incomes and less access to education, rather than bilingualism itself being the cause of lower performance.</p>
-            <p>Modern research has completely reversed this view. Today, it is widely accepted that bilingualism offers significant cognitive advantages. One of the most well-documented benefits is enhanced executive function — the set of mental processes that enables us to plan, focus attention, remember instructions, and juggle multiple tasks successfully. Because bilingual individuals constantly switch between languages, they regularly exercise their ability to select relevant information and ignore distractions. This constant mental training strengthens the brain’s control systems, leading to better problem-solving skills, greater mental flexibility, and improved ability to focus on important details.</p>
-            <p>Studies using brain imaging have shown that bilingualism changes the structure and function of the brain. The regular practice of switching languages increases the density of grey matter in areas responsible for language processing and cognitive control. It also strengthens the connections between different brain regions, creating a more robust neural network. These changes are not limited to childhood; adults who learn a second language later in life also show similar improvements, though the extent of change may vary depending on age and level of proficiency.</p>
-            <p>Perhaps the most exciting finding is the protective effect of bilingualism against age-related cognitive decline. Research conducted over several decades has demonstrated that bilingual individuals develop symptoms of dementia, including Alzheimer’s disease, on average four to five years later than monolinguals. This delay occurs regardless of factors such as education level, occupation, or socioeconomic status. Scientists believe this is due to the concept of ‘cognitive reserve’ — the brain’s ability to maintain function despite damage. The constant mental stimulation provided by managing two languages builds up this reserve, allowing the brain to compensate better for the physical changes associated with aging.</p>
-            <p>Beyond cognitive benefits, bilingualism offers practical advantages in an increasingly globalised world. It opens up opportunities for employment, travel, and cross-cultural understanding. People who speak more than one language often have greater access to information and can communicate with a wider range of people. There is also evidence that bilingualism improves perspective-taking and empathy, as individuals regularly navigate between different linguistic and cultural frameworks, learning to see the world from more than one viewpoint.</p>
-            <p>Despite these benefits, many parents still worry that raising children bilingually will cause language delays or confusion. However, research consistently shows that bilingual children follow the same developmental stages as monolingual children, and any temporary mixing of languages is a normal part of language acquisition, not a sign of confusion. By the time they reach school age, most bilingual children can clearly separate their two languages and use them appropriately in different contexts.</p>
-            <p>In conclusion, the view that bilingualism is a disadvantage has been thoroughly overturned. From enhanced cognitive flexibility and better executive function to protection against dementia and improved cultural awareness, speaking two languages offers lifelong benefits. Whether acquired in childhood or adulthood, bilingualism is a valuable asset that strengthens the brain and enriches personal and professional life.</p>
+            <h2 style="text-align:center; margin-bottom:20px;">European Transport Systems</h2>
+            <!-- ✅ YOUR FULL PASSAGE CONTENT HERE -->
+            <p>For much of the 20th century, European transport policy was focused almost entirely on building new roads and expanding the highway network. Governments believed that economic growth depended on making it easier and faster for people and goods to travel by car and truck. Massive investment went into motorways, bridges, and tunnels, while railways and public transport systems were often neglected or allowed to decline. By the 1990s, however, it became clear that this approach had created serious problems: severe traffic congestion, worsening air pollution, rising carbon emissions, and growing dependence on imported oil.</p>
+            <p>In response, the European Union developed a new strategy aimed at creating a sustainable and efficient transport system for the future. The core idea was to shift the balance between different modes of transport, moving freight and passengers away from roads and onto railways, inland waterways, and short-sea shipping. This policy, known as the ‘modal shift’, was designed to reduce environmental damage, improve safety, and make transport more reliable and affordable. The EU set specific targets: by 2030, 30% of road freight over 300 km should shift to other modes, and by 2050 this figure should rise to 50%.</p>
+            <p>Rail transport has been the biggest beneficiary of this change in policy. High-speed rail networks have expanded rapidly across the continent, connecting major cities and competing effectively with air travel for journeys of up to 600 km. New high-speed lines in France, Spain, Germany, and Italy have cut travel times significantly — for example, the journey from Paris to Marseille now takes just over three hours, compared to more than six hours before. Rail freight has also been modernised, with new cross-border services, improved terminals, and better interoperability between different national systems. Although rail still carries less than 20% of all freight in Europe, its market share is growing steadily.</p>
+            <p>Inland waterways, which carry around 6% of European freight, have also received renewed attention. Many rivers and canals were built centuries ago and had fallen into disrepair. Today, they are being upgraded and connected to form a comprehensive network that can handle larger barges and carry goods between countries efficiently. Water transport is particularly suitable for heavy or bulky goods such as coal, grain, and construction materials. It is also the most environmentally friendly option, producing far less carbon dioxide and noise than road or rail.</p>
+            <p>Urban transport has been another key area of reform. Cities across Europe have introduced measures to reduce car use and improve public transport, cycling, and walking. These include congestion charges in London and Stockholm, dedicated bus and tram lanes, extensive cycle networks in Amsterdam and Copenhagen, and pedestrian zones in historic city centres. Some cities have also invested in metro systems and light rail to provide fast, reliable services. The aim is not just to reduce pollution and congestion, but also to improve quality of life, make cities more attractive places to live and work, and encourage healthier lifestyles.</p>
+            <p>Despite these successes, major challenges remain. Transport demand is still growing, driven by population increase, economic growth, and global trade. Many rural areas still have poor transport links, and public transport services are often expensive or infrequent. Cross-border travel can still be complicated by different technical standards, regulations, and language barriers. Furthermore, while transport has become more efficient, it still accounts for around 25% of the EU’s total greenhouse gas emissions, and progress towards climate targets has been slower than expected.</p>
+            <p>Looking ahead, the focus is now on digitalisation and new technologies. Intelligent transport systems use data, sensors, and automation to manage traffic flow, improve safety, and reduce delays. Electric vehicles, hydrogen-powered trains, and alternative fuels are being developed to cut emissions further. The ultimate goal is a fully integrated European transport network, where passengers and goods can move seamlessly between different countries and different modes of transport, with minimal impact on the environment.</p>
         </div>
 
-        <!-- YOUR QUESTIONS -->
         <div class="box">
             <h3 style="margin-bottom:15px;">Questions 14–26</h3>
 
@@ -201,62 +69,60 @@
                 <h4>Questions 14–19</h4>
                 <p><em>Choose the correct letter A, B, C or D.</em></p>
 
-                <label><strong>14.</strong> Early 20th century research suggested bilingualism was:</label>
-                <textarea class="ans" data-answer="detrimental / harmful / a disadvantage"></textarea>
-                <div class="correct-answer">Correct answer: detrimental / harmful / a disadvantage</div>
+                <label><strong>14.</strong> Before the 1990s, European transport policy prioritized:</label>
+                <textarea class="ans" data-answer="road building / highways"></textarea>
+                <div class="correct-answer">Correct answer: road building / highways / motorway expansion</div>
 
-                <label><strong>15.</strong> Why were early studies unreliable?</label>
-                <textarea class="ans" data-answer="ignored socioeconomic factors"></textarea>
-                <div class="correct-answer">Correct answer: ignored socioeconomic factors / did not consider background</div>
+                <label><strong>15.</strong> The main aim of the EU’s new policy was to:</label>
+                <textarea class="ans" data-answer="shift transport modes / reduce road use"></textarea>
+                <div class="correct-answer">Correct answer: shift transport modes / reduce road dependency</div>
 
-                <label><strong>16.</strong> The main cognitive benefit is:</label>
-                <textarea class="ans" data-answer="enhanced executive function"></textarea>
-                <div class="correct-answer">Correct answer: enhanced executive function / better mental control</div>
+                <label><strong>16.</strong> High-speed rail has improved by:</label>
+                <textarea class="ans" data-answer="reducing travel time / connecting cities"></textarea>
+                <div class="correct-answer">Correct answer: reducing travel time / better city connections</div>
 
-                <label><strong>17.</strong> Brain imaging shows bilingualism:</label>
-                <textarea class="ans" data-answer="changes brain structure / increases grey matter"></textarea>
-                <div class="correct-answer">Correct answer: changes brain structure / increases grey matter density</div>
+                <label><strong>17.</strong> Inland water transport is best for:</label>
+                <textarea class="ans" data-answer="heavy / bulky goods"></textarea>
+                <div class="correct-answer">Correct answer: heavy or bulky goods / bulk cargo</div>
 
-                <label><strong>18.</strong> Cognitive reserve helps by:</label>
-                <textarea class="ans" data-answer="compensating for brain damage"></textarea>
-                <div class="correct-answer">Correct answer: compensating for damage / maintaining function</div>
+                <label><strong>18.</strong> Cities have reduced car use by:</label>
+                <textarea class="ans" data-answer="congestion charges / better public transport"></textarea>
+                <div class="correct-answer">Correct answer: congestion charges / dedicated lanes / better public transport</div>
 
-                <label><strong>19.</strong> Raising bilingual children is:</label>
-                <textarea class="ans" data-answer="safe / beneficial / not harmful"></textarea>
-                <div class="correct-answer">Correct answer: safe / beneficial / normal development</div>
+                <label><strong>19.</strong> One remaining problem is:</label>
+                <textarea class="ans" data-answer="growing demand / high emissions"></textarea>
+                <div class="correct-answer">Correct answer: growing demand / high emissions / rural access</div>
             </div>
 
             <div class="question">
                 <h4>Questions 20–23</h4>
                 <p><em>Complete the summary with NO MORE THAN TWO WORDS.</em></p>
 
-                <p>Bilingualism improves <span class="q-number">20.</span> <textarea class="ans inline-input" data-answer="executive function"></textarea> and helps ignore <span class="q-number">21.</span> <textarea class="ans inline-input" data-answer="distractions"></textarea>. It delays <span class="q-number">22.</span> <textarea class="ans inline-input" data-answer="dementia"></textarea> in older age and builds greater <span class="q-number">23.</span> <textarea class="ans inline-input" data-answer="cognitive reserve"></textarea>.</p>
+                <p>The EU policy aims to move <span class="q-number">20.</span> <textarea class="ans inline-input" data-answer="freight"></textarea> and passengers away from roads. <span class="q-number">21.</span> <textarea class="ans inline-input" data-answer="high-speed"></textarea> rail has become very popular. Waterways are ideal for <span class="q-number">22.</span> <textarea class="ans inline-input" data-answer="heavy"></textarea> goods. Cities use <span class="q-number">23.</span> <textarea class="ans inline-input" data-answer="congestion charges"></textarea> to limit cars.</p>
             </div>
 
             <div class="question">
                 <h4>Questions 24–26</h4>
                 <p><em>TRUE / FALSE / NOT GIVEN</em></p>
 
-                <label><strong>24.</strong> Adults cannot get the same benefits as children.</label>
+                <label><strong>24.</strong> Rail now carries most freight in Europe.</label>
                 <textarea class="ans" data-answer="FALSE"></textarea>
                 <div class="correct-answer">Correct answer: FALSE</div>
 
-                <label><strong>25.</strong> Bilingualism delays dementia regardless of education.</label>
+                <label><strong>25.</strong> Water transport produces less pollution than road.</label>
                 <textarea class="ans" data-answer="TRUE"></textarea>
                 <div class="correct-answer">Correct answer: TRUE</div>
 
-                <label><strong>26.</strong> Bilingual children mix languages until teenage years.</label>
+                <label><strong>26.</strong> All rural areas now have good transport links.</label>
                 <textarea class="ans" data-answer="FALSE"></textarea>
                 <div class="correct-answer">Correct answer: FALSE</div>
             </div>
         </div>
     </div>
 
-    <!-- Bottom controls & navigation -->
     <div class="bottom-controls">
         <button class="check-btn" onclick="toggleAnswers()">Show / Hide Answers</button>
         <div class="nav">
-            <!-- ✅ CORRECT LINK TO YOUR PASSAGE 1 FILE NAME -->
             <a href="reading-stepwells.html" class="prev">← Previous Passage</a>
             <span class="next">Next Passage →</span>
         </div>
@@ -268,17 +134,15 @@
         const removeTool = document.getElementById('removeTool');
         let currentRange = null;
 
-        // --- Auto-save answers - ✅ KEY NAME MATCHES FILE NAME ---
         window.onload = function() {
             document.querySelectorAll('.ans').forEach((el, i) => {
-                const key = 'transport_ans_' + i; // ✅ Named "transport" NOT passage2
+                const key = 'transport_ans_' + i;
                 const saved = localStorage.getItem(key);
                 if (saved) el.value = saved;
                 el.addEventListener('input', () => localStorage.setItem(key, el.value));
             });
         };
 
-        // --- Show highlight icon when text is selected ---
         passageBox.addEventListener('mouseup', function(e) {
             const selection = window.getSelection();
             if (!selection || selection.isCollapsed || selection.toString().trim() === '') {
@@ -293,7 +157,6 @@
             highlightTool.style.display = 'block';
         });
 
-        // --- Highlight when pencil icon is clicked ---
         highlightTool.addEventListener('click', function() {
             if (!currentRange) return;
             const span = document.createElement('span');
@@ -306,7 +169,6 @@
             currentRange = null;
         });
 
-        // --- Show remove option when clicking existing highlight ---
         passageBox.addEventListener('click', function(e) {
             if (e.target.classList.contains('user-highlight')) {
                 const rect = e.target.getBoundingClientRect();
@@ -320,7 +182,6 @@
             }
         });
 
-        // --- Remove highlight function ---
         removeTool.addEventListener('click', function() {
             const span = this.dataset.target;
             if (!span || !span.parentNode) return;
@@ -332,7 +193,6 @@
             delete this.dataset.target;
         });
 
-        // Hide tools when clicking outside
         document.addEventListener('click', function(e) {
             if (!highlightTool.contains(e.target) && !passageBox.contains(e.target) && !removeTool.contains(e.target)) {
                 highlightTool.style.display = 'none';
@@ -340,7 +200,6 @@
             }
         });
 
-        // --- Toggle show/hide answers ---
         function toggleAnswers() {
             const answers = document.querySelectorAll('.correct-answer');
             answers.forEach(ans => {
